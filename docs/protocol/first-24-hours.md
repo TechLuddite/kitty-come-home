@@ -34,22 +34,29 @@ Do these in order. Do not skip step 1, however sure you are.
    basement, the garage, and anywhere a cat could have been shut in when a door closed. Move
    things. Look with a torch. A cat can flatten into a space you would swear was solid.
 
-2. **Prop your door open if you safely can**, or leave a window cracked with a screen removed at
+2. **Work out how it got out, and mark the spot.** The open door, the broken screen, the gap
+   behind a vent, the window that does not latch. This is the worst minute of the night and it
+   is also the most useful one, because everything else in this document is measured from that
+   spot: the feeding station goes there, the camera goes there, and the search rings are drawn
+   around it. If you genuinely cannot tell, use the most likely door and adjust when you learn
+   more.
+
+3. **Prop your door open if you safely can**, or leave a window cracked with a screen removed at
    ground level. Cats often return on their own during the quiet hours before dawn. Put the
    litter tray just outside the door, the smell is a strong navigation cue.
 
-3. **Get the whole household quiet and switch off the noise.** TV off, music off. You are
+4. **Get the whole household quiet and switch off the noise.** TV off, music off. You are
    listening for a very faint sound: a rustle, a bell, a single short cry.
 
-4. **Go outside and stand still for two minutes before you search anything.** Listen. This
+5. **Go outside and stand still for two minutes before you search anything.** Listen. This
    sounds like wasted time and is not.
 
-5. **Search the ground immediately against your own house first**, under the deck or porch, in
+6. **Search the ground immediately against your own house first**, under the deck or porch, in
    the crawlspace, under the steps, in the shrubs against the wall, under the parked cars in your
    own driveway, in the shed, in the garage, behind the bins. A cat that bolts out a door
    frequently does not get past its own property line.
 
-6. **Then work outward on foot.** Do not drive. You cannot see under a hedge at 20 mph, and the
+7. **Then work outward on foot.** Do not drive. You cannot see under a hedge at 20 mph, and the
    cat is 39 metres away, not 3 kilometres.
 
 ## 2. Tonight: the night search

@@ -6,7 +6,7 @@ labels: bug
 ---
 
 **If this involves a case's location data, a sighting reporter's contact details, or camera
-footage, please do not post it here.** Report it privately — see [SECURITY.md](https://github.com/TechLuddite/kitty-come-home/blob/main/SECURITY.md).
+footage, please do not post it here.** Report it privately: see [SECURITY.md](https://github.com/TechLuddite/kitty-come-home/blob/main/SECURITY.md).
 
 ### What happened
 

@@ -29,7 +29,7 @@ is much higher than the cost of repeating yourself.
 
 - Harassment, personal attacks, or discriminatory language of any kind.
 - Dismissing or mocking somebody's distress about a missing animal.
-- Publishing anyone's private information — addresses, contact details, location data — including
+- Publishing anyone's private information, addresses, contact details, location data, including
   from screenshots or camera footage shared in an issue.
 - Using this project to promote a paid service to people in the middle of a search.
 - Sustained disruption of discussion.
@@ -45,7 +45,7 @@ where it will not.
 
 ## Scope
 
-Applies to all project spaces — issues, pull requests, discussions — and to anyone representing
+Applies to all project spaces, issues, pull requests, discussions, and to anyone representing
 the project elsewhere.
 
 ---

@@ -1,4 +1,4 @@
-# ADR 0003 — Two AI features; the rest rejected
+# ADR 0003: Two AI features; the rest rejected
 
 Date: 2026-08-20. Status: accepted.
 
@@ -23,14 +23,14 @@ Applied honestly, that test rejects most of what would otherwise go into a proje
 
 **Camera triage passes clearly.** A feeding station with a trail camera produces several hundred
 motion events a night, nearly all raccoons, opossums, other cats and moving branches. Owners
-review that for two mornings and then stop — at which point the most reliable detection method in
+review that for two mornings and then stop, at which point the most reliable detection method in
 the protocol quietly stops working. Cutting an hour of review to a minute keeps the station
 running for the weeks it may need to. That is a direct reduction in time-to-find.
 
 It also passes on tractability, and for a structural reason. General lost-pet matching is
 open-set 1:N identification against a national database, where published benchmarks converge near
-68% true acceptance at strict false-acceptance rates. Camera triage asks a much easier question —
-does this clip contain a cat, and is it plausibly yours — over tens of candidates from one
+68% true acceptance at strict false-acceptance rates. Camera triage asks a much easier question
+(does this clip contain a cat, and is it plausibly yours) over tens of candidates from one
 location against many reference photos. The first stage is ordinary object detection and delivers
 most of the value on its own.
 
@@ -58,8 +58,8 @@ point of use, is precisely the workload that breaks per-inference pricing.
 
 ## On NVIDIA's free tier
 
-The free tier at build.nvidia.com is real — roughly 1,000 credits, no credit card, 40 requests per
-minute, 100+ models behind OpenAI-compatible endpoints — and public sources state plainly that it
+The free tier at build.nvidia.com is real, roughly 1,000 credits, no credit card, 40 requests per
+minute, 100+ models behind OpenAI-compatible endpoints, and public sources state plainly that it
 is unsuitable for real user traffic.
 
 **We use it for evaluation, not serving.** It is a genuinely good way to compare vision-language
@@ -76,7 +76,7 @@ exists. Verify before relying on them.
 provider's free tier. The features that ship are the ones that would survive someone asking what
 they are for.
 
-**Bad.** On-device processing constrains model size and adds client complexity — model download,
+**Bad.** On-device processing constrains model size and adds client complexity, model download,
 storage, and a real difference between a recent phone and an old one. Rejecting general matching
 means an owner whose cat did reach a shelter is not served by us; the protocol sends them to Petco
 Love Lost, which does it better.
@@ -95,8 +95,8 @@ Each of these was considered and rejected on the test above; reasoning in
 - **A conversational assistant.** The owner at 11pm needs a checklist and a map. The correct answer
   is already written down and does not vary. Chat would add latency, non-determinism and cost while
   helping nobody.
-- **AI-generated flyer copy.** A template produces better flyers — the constraints are fixed and
-  known — and it works offline, costs nothing, and cannot produce something strange on the worst
+- **AI-generated flyer copy.** A template produces better flyers, the constraints are fixed and
+  known, and it works offline, costs nothing, and cannot produce something strange on the worst
   night of somebody's year.
 - **A predictive heat map of where the cat is.** The distance distributions are population
   statistics, not a per-cat prior. Rendering them as a heat map would manufacture false confidence

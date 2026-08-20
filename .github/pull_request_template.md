@@ -14,7 +14,7 @@
 
 - [ ] [`docs/evidence.md`](https://github.com/TechLuddite/kitty-come-home/blob/main/docs/evidence.md) updated with the source
 - [ ] Where the evidence is weak, the document says so rather than rounding up to confident
-- [ ] Based on: <!-- study, field experience, or both — please say which -->
+- [ ] Based on: <!-- study, field experience, or both, please say which -->
 
 ### If this touches location, PII, or camera data
 

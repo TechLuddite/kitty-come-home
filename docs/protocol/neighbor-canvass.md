@@ -16,7 +16,7 @@ that because of a leaflet. A fair number will do it because someone stood at the
 
 Prioritise strictly by distance from the escape point:
 
-1. **Immediately adjacent properties** — both sides, directly behind, and directly across.
+1. **Immediately adjacent properties**, both sides, directly behind, and directly across.
 2. **Five houses in each direction.** MAR case data puts 92% of displaced indoor-only cats inside
    this radius.
 3. **Then outward to ~150 m.**
@@ -28,11 +28,12 @@ building work in progress, or a car that has not moved in a while.
 
 Short, specific, and asking for one concrete action:
 
-> "Sorry to bother you — I'm at number 14, four doors down. My indoor cat got out on Tuesday
+> "Sorry to bother you. I'm at number 14, four doors down. My indoor cat got out on Tuesday
 > night. She's a grey tabby with a white chest, and she's never been outside before, so she'll be
-> hiding rather than wandering. She won't come out even if she hears me.
+> hiding rather than wandering, and she often won't come out even if she hears you, so please
+> don't take quiet as a no.
 >
-> Could I ask a favour — would you mind opening your shed and garage and having a proper look
+> Could I ask a favour, would you mind opening your shed and garage and having a proper look
 > with a torch? Under the deck too, if you have one. She'd be tucked right at the back and
 > completely silent, so it does need a light.
 >
@@ -40,10 +41,11 @@ Short, specific, and asking for one concrete action:
 
 The four things that need to be in it:
 
-1. **It is an indoor cat and it will not come when called.** Otherwise they will stand in the
-   garden calling for ten seconds and report back that it is not there.
+1. **It is an indoor cat and it may not come when called.** Otherwise they will stand in the
+   garden calling for ten seconds, hear nothing, and report back that it is not there. Some cats
+   do answer; silence is simply not evidence either way.
 2. **A torch and a proper look.** A glance from the doorway finds nothing.
-3. **Where to look** — shed, garage, deck, crawlspace, under the car.
+3. **Where to look**, shed, garage, deck, crawlspace, under the car.
 4. **Call any time.** People sit on a 1am sighting until morning because they do not want to
    disturb you. Say it explicitly.
 
@@ -52,7 +54,7 @@ The four things that need to be in it:
 Two questions, always:
 
 - "Have you seen her?"
-- **"Is there anywhere on your property I could check — a shed or a crawlspace?"**
+- **"Is there anywhere on your property I could check, a shed or a crawlspace?"**
 
 The second is the one that finds cats. Log every "no answer" and every locked outbuilding as
 **BLOCKED** on your grid and go back.
@@ -67,7 +69,7 @@ again on the second pass.
 
 ## Also worth knocking on
 
-- **Anyone working outdoors regularly** — postal workers, delivery drivers, refuse crews,
+- **Anyone working outdoors regularly**, postal workers, delivery drivers, refuse crews,
   gardeners, dog walkers on a fixed route. They cover the whole area daily and they notice animals.
 - **Building sites**, which are full of exactly the kind of enclosed spaces cats choose.
 - **Corner shops and cafés** for a poster in the window.
@@ -83,17 +85,18 @@ first one did not.
 Large photo, few words, readable from a car:
 
 ```
-LOST CAT — INDOOR ONLY, WILL BE HIDING
+LOST CAT. INDOOR ONLY, WILL BE HIDING
 
         [ large, clear photo ]
 
 Grey tabby, white chest, green collar
 Missing since Tue 19 Aug from Elm Street
 
-She will NOT come when called.
+She may NOT come when called.
 Please check sheds, garages, decks, crawlspaces.
 
-Call or text ANY TIME — 555-0142
+Call or text ANY TIME, 555-0142
 ```
 
-The line that earns its place is **"will not come when called."** It changes what people do.
+The line that earns its place is **"may not come when called."** It changes what people do: they
+stop treating a quiet garden as an answer and go and open the shed.

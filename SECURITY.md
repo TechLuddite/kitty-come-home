@@ -28,7 +28,7 @@ access to stored photos or camera footage, and injection of any kind.
 
 ## Scope
 
-This repository. There is no deployed instance yet — the project is greenfield and no Supabase
+This repository. There is no deployed instance yet, the project is greenfield and no Supabase
 project exists. When one does, this section will name it.
 
 ## Supported versions

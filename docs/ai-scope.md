@@ -1,15 +1,15 @@
 # Where AI earns its place
 
-Version 1 — 2026-08-20. Status: proposal. Nothing here has been built or evaluated.
+Version 1 to 2026-08-20. Status: proposal. Nothing here has been built or evaluated.
 
 ## 1. Summary
 
 I recommend we ship exactly two AI features, in this order:
 
-1. **Camera triage** — reduce a night's several hundred motion clips to the few containing a cat,
+1. **Camera triage**, reduce a night's several hundred motion clips to the few containing a cat,
    ranked against the owner's reference photos. This is the highest-value AI application in the
    project by a wide margin.
-2. **Sighting-report triage** — turn free-text reports from neighbours into structured, mapped,
+2. **Sighting-report triage**, turn free-text reports from neighbours into structured, mapped,
    de-duplicated, plausibility-ranked records.
 
 And that we explicitly do not build general lost-pet photo matching against a listings database,
@@ -17,9 +17,9 @@ a conversational assistant, or AI-generated flyer copy. Reasoning in section 5.
 
 The test applied throughout: **does this reduce the time between the cat being findable and the
 owner finding it?** A feature that does not measurably do that is not worth the dependency, the
-cost, or the failure modes — however good it demonstrates.
+cost, or the failure modes, however good it demonstrates.
 
-## 2. Camera triage — recommended
+## 2. Camera triage: recommended
 
 ### The problem
 
@@ -37,12 +37,12 @@ run. That is a direct, measurable reduction in time-to-find.
 This is the important distinction, and it is easy to lose.
 
 General lost-pet photo matching is **open-set 1:N identification**: is this cat, from a national
-database of 200,000 listings, your cat — when it may be no cat in the database at all. Published
+database of 200,000 listings, your cat, when it may be no cat in the database at all. Published
 work is better than it used to be; a 2026 dual-stream CLIP-ViT approach reports Rank-1 accuracy
 around 0.974 on a 173-identity benchmark. But the same paper reports **open-set verification
 converging near 68% true acceptance** at the strictest false-acceptance rate, and open-set is the
 real deployment condition. The paper also identifies down-sampling and motion blur as the dominant
-corruptions — which describes essentially every found-pet photo, and every night-time IR clip.
+corruptions, which describes essentially every found-pet photo, and every night-time IR clip.
 
 Camera triage is a materially easier problem on four counts:
 
@@ -52,9 +52,9 @@ Camera triage is a materially easier problem on four counts:
 | Question | "Which of these is your cat?" | "Does this clip contain a cat, and is it plausibly yours?" |
 | Reference set | One or two listing photos | Many owner photos, multiple angles |
 | Cost of a false positive | An identity claim to a grieving owner | 20 seconds looking at a raccoon |
-| Cost of a false negative | The match is missed | Mitigated — all clips stay reviewable |
+| Cost of a false negative | The match is missed | Mitigated, all clips stay reviewable |
 
-The first stage — **is there a cat in this frame at all** — is ordinary object detection and is
+The first stage, **is there a cat in this frame at all**, is ordinary object detection and is
 close to solved. That stage alone delivers most of the value, because it is what removes the
 raccoons and the moving branches. Identity ranking is a second, softer stage on top.
 
@@ -70,7 +70,7 @@ raccoons and the moving branches. Identity ranking is a second, softer stage on 
 
 ### Recommended placement: on-device or self-hosted, not a hosted API
 
-I recommend image processing run locally — on the owner's phone or machine — rather than by
+I recommend image processing run locally, on the owner's phone or machine, rather than by
 uploading clips to a hosted inference API.
 
 Three reasons, in order of weight:
@@ -87,7 +87,7 @@ Three reasons, in order of weight:
 
 A cat detector is small. This is well within what runs on a phone.
 
-## 3. Sighting triage — recommended, second
+## 3. Sighting triage: recommended, second
 
 Neighbours report in free text, by SMS, in a form, and verbally: "grey tabby, by the blue house on
 Elm, around nine." Useful work exists in structuring that: extracting time and location, matching
@@ -101,12 +101,12 @@ documents an automatic-embeddings pattern using triggers, `pgmq`, `pg_net` and `
 
 The constraint worth being clear about: **`gte-small` is a text model.** Supabase's built-in
 inference does not do image embeddings. So Supabase AI serves sighting text well and does nothing
-for camera triage — where Supabase's role is `pgvector` as storage for embeddings produced
+for camera triage, where Supabase's role is `pgvector` as storage for embeddings produced
 elsewhere, not as the model.
 
 ## 4. Provider assessment
 
-### NVIDIA build (build.nvidia.com) — prototyping only
+### NVIDIA build (build.nvidia.com): prototyping only
 
 The free tier is real and useful, and it is not a production path.
 
@@ -123,9 +123,9 @@ would mean rebuilding later.
 
 Verify the current terms before relying on any of this. These figures come from third-party
 summaries rather than NVIDIA's own pricing page, free tiers change, and none of it has been
-tested against an account — we do not have one.
+tested against an account, we do not have one.
 
-### Supabase AI — good fit, correctly scoped
+### Supabase AI: good fit, correctly scoped
 
 `pgvector` for vector storage and similarity search, and `gte-small` in Edge Functions for text
 embeddings with no external call. Both are directly useful for sighting triage. Neither addresses
@@ -151,8 +151,8 @@ The protocol tells owners to use Petco Love Lost instead, on day one.
 interface adds latency, non-determinism and a token bill to a problem whose correct answer is
 already written down and does not vary. It would demonstrate well and help nobody.
 
-**AI-generated flyer copy.** A template produces better flyers here — the constraints are fixed
-and known (large photo, few words, readable from a car, the line "will not come when called"),
+**AI-generated flyer copy.** A template produces better flyers here, the constraints are fixed
+and known (large photo, few words, readable from a car, the line "may not come when called"),
 and a template works offline, costs nothing, and cannot produce something strange on the worst
 night of somebody's year.
 
@@ -172,7 +172,7 @@ model.
   detection may deliver nearly all the value.
 - Current NVIDIA free-tier terms, from NVIDIA rather than from third-party summaries.
 - Whether 384-dimension `gte-small` is sufficient for sighting-text similarity, or whether the
-  useful signal is really in the extracted structured fields — location, time, description — with
+  useful signal is really in the extracted structured fields, location, time, description, with
   embeddings adding little.
 
 ## Provenance

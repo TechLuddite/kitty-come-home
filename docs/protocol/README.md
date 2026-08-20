@@ -23,7 +23,7 @@ Written for **indoor-only cats that escaped outdoors**, in a suburban or urban r
 setting. That is the case with the clearest evidence base and the worst recovery rate, and it is
 the case this project exists for.
 
-Cats with regular outdoor access behave differently — they range further (median 300 m against
+Cats with regular outdoor access behave differently, they range further (median 300 m against
 39 m) and a missing outdoor cat more often means something happened to it rather than that it is
 hiding nearby. Much of this still applies, but the tight-radius assumption does not.
 
@@ -35,16 +35,21 @@ Every factual claim traces to [`../evidence.md`](../evidence.md), principally th
 2018 study of 1,210 missing cats and the Missing Animal Response Network's published case data.
 Where the evidence is thin, the evidence document says so.
 
-The behavioural model — that a panicked indoor cat hides in silence nearby and will not answer —
-is reported by practitioners rather than established by controlled study. It is consistent with
-the distance data, and several steps here depend on it.
+The behavioural model (that a panicked indoor cat hides nearby and often will not answer when
+called) is reported by practitioners rather than established by controlled study. It is consistent
+with the distance data, and several steps here depend on it.
+
+Note the "often". Cats do come out for their owners, and the 2018 study lists calling the cat's
+name among the tactics reported alongside recovery. How a given cat responds depends on the cat,
+on what it has been through, on how long it has been out, and on who is calling. Nothing here
+should be read as telling you not to call. It is telling you not to treat silence as an answer.
 
 ## Corrections wanted
 
 This is the part of the repository where being wrong has a real cost, and where people with
 field experience know things the literature does not record.
 
-If you do this work — shelter or rescue staff, TNR trappers, MAR-trained searchers, or someone
-who found their own cat and learned something the hard way — and something here is wrong,
+If you do this work, shelter or rescue staff, TNR trappers, MAR-trained searchers, or someone
+who found their own cat and learned something the hard way, and something here is wrong,
 misleading, or missing, please [open an issue](https://github.com/TechLuddite/kitty-come-home/issues/new/choose). Field experience
 counts as evidence here.

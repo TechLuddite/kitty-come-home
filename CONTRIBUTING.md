@@ -1,15 +1,15 @@
 # Contributing
 
-Contributions are welcome. This is a small project with a narrow goal — help people find escaped
-indoor cats faster — and the most valuable contributions are not necessarily code.
+Contributions are welcome. This is a small project with a narrow goal, help people find escaped
+indoor cats faster, and the most valuable contributions are not necessarily code.
 
 ## What helps most
 
 **1. Corrections to the protocol.**
 
 [`docs/protocol/`](docs/protocol/) is the part where being wrong has a real cost. If you do this
-work — shelter or rescue staff, TNR trappers, MAR-trained searchers, animal control, or someone
-who found their own cat and learned something the hard way — and something here is wrong,
+work, shelter or rescue staff, TNR trappers, MAR-trained searchers, animal control, or someone
+who found their own cat and learned something the hard way, and something here is wrong,
 misleading, or missing, please [open an issue](https://github.com/TechLuddite/kitty-come-home/issues/new/choose).
 
 Field experience counts as evidence here. You do not need a citation. Tell us what happened, what
@@ -19,7 +19,7 @@ you did, and what worked. If it contradicts what is written, that is exactly the
 
 Phase 3 cannot start without an evaluation set, and academic benchmarks on curated datasets are
 poor evidence for greyscale IR clips of a feeding station at 3am. If you have footage you are
-willing to share, please open an issue before uploading anything — we need to sort out consent and
+willing to share, please open an issue before uploading anything, we need to sort out consent and
 privacy first, since these clips often contain other people's property.
 
 **3. Translation.** Spanish first.
@@ -41,7 +41,7 @@ instructions at 2am with their cat's life in the balance. Changes need reasoning
 source or direct field experience.
 
 **Respect the scope.** [`docs/adr/`](docs/adr/) records what this project decided not to build and
-why — shelter aggregation, photo matching against listings, chatbots, dogs. These are not
+why, shelter aggregation, photo matching against listings, chatbots, dogs. These are not
 oversights. If you think one is wrong, open an issue arguing the case and bring evidence; a pull
 request implementing it will not be merged on its own.
 
@@ -52,7 +52,7 @@ rejected regardless of what else it does.
 
 ## Code
 
-Nothing is built yet, so there is unusual freedom here — and correspondingly, please open an issue
+Nothing is built yet, so there is unusual freedom here, and correspondingly, please open an issue
 to discuss anything substantial before writing it. The front-end framework is deliberately
 unchosen, waiting on a contributor with a preference and the willingness to maintain it.
 

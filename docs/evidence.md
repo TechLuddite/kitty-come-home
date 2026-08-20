@@ -1,6 +1,6 @@
 # Evidence base
 
-Version 1 — 2026-08-20.
+Version 1 to 2026-08-20.
 
 Everything in this repository that makes a factual claim about cat behaviour or recovery should
 trace back to this document. Where the evidence is weak, this says so. Where two sources
@@ -10,11 +10,11 @@ disagree, both are given.
 
 The design rests on four findings, in descending order of how much weight they carry:
 
-1. Escaped indoor-only cats are found very close to home — median 39 m.
+1. Escaped indoor-only cats are found very close to home, median 39 m.
 2. Under 2% of found cats were found in a shelter.
 3. Physical searching of the immediate area is the recovery method with the strongest signal,
    though the association falls just short of conventional significance.
-4. Microchipping showed no detectable effect on recovery in this dataset — which is not an
+4. Microchipping showed no detectable effect on recovery in this dataset, which is not an
    argument against microchipping, and is explained in section 5.
 
 ## 2. Primary source
@@ -30,10 +30,10 @@ questionnaire, University of Queensland.
 
 | Interval | Found alive | 95% CI |
 |---|---|---|
-| Day 7 | 34% | 31–37% |
-| Day 30 | 50% | 47–53% |
-| Day 61 | 56% | 53–59% |
-| One year | 61% | 57–64% |
+| Day 7 | 34% | 31 to 37% |
+| Day 30 | 50% | 47 to 53% |
+| Day 61 | 56% | 53 to 59% |
+| One year | 61% | 57 to 64% |
 
 The first week carries a disproportionate share of the outcome. This is the single strongest
 argument for front-loading effort, and it is why the protocol is organised around the first 24
@@ -41,15 +41,15 @@ hours rather than a steady-state search.
 
 ### Distance from point of escape
 
-| Cat type | Median | 25th–75th percentile |
+| Cat type | Median | 25th to 75th percentile |
 |---|---|---|
-| Indoor-only | **39 m** | 9–137 m |
-| Indoor-outdoor, unsupervised access | 300 m | 14–1,609 m |
+| Indoor-only | **39 m** | 9 to 137 m |
+| Indoor-outdoor, unsupervised access | 300 m | 14 to 1,609 m |
 
 75% of all cats were found within 500 m of the point of escape. The difference between the two
 groups was significant (p ≤ 0.001).
 
-Note the interquartile range on indoor-only cats: 9–137 m. Even the upper quartile is inside a
+Note the interquartile range on indoor-only cats: 9 to 137 m. Even the upper quartile is inside a
 radius most people can walk in a few minutes. This is the number that makes a systematic
 close-range search worth doing properly rather than quickly.
 
@@ -85,7 +85,7 @@ evidence point the same way, not because any one of them is conclusive.
 
 ## 3. Missing Animal Response case data
 
-Kat Albrecht's Missing Animal Response Network — an author on the study above — reports from its
+Kat Albrecht's Missing Animal Response Network, an author on the study above, reports from its
 own case files that displaced indoor-only cats are found at a median of about **50 m**, and that
 **92% of 158 cases** of displaced indoor-only cats were found within a five-house radius.
 
@@ -100,8 +100,14 @@ radius as a useful rule of thumb for the same phenomenon.
 
 MAR categorises lost cat behaviour into displaced indoor cats, displaced outdoor cats, and lost
 outdoor cats. The relevant claim for this project is that a panicked indoor cat's response is to
-bolt a short distance and hide in silence, and that it will often not respond to its name even
-when the owner is within a few metres — particularly in the first day or two.
+bolt a short distance and hide, and that it will often not respond to its name even when the
+owner is within a few metres, particularly in the first day or two.
+
+The word doing the work there is "often". This is a tendency, not a rule, and the same study
+records calling the cat's name among the tactics reported alongside recovery. Response very
+plausibly varies with the individual cat, its recent experience, elapsed time and who is calling,
+none of which the data separates. The defensible claim is that **silence is weak evidence of
+absence**, not that a displaced cat will not answer.
 
 This is a behavioural model reported by practitioners rather than a controlled finding, and it is
 the load-bearing assumption behind the night-search and feeding-station steps. If it is wrong,
@@ -125,7 +131,7 @@ Microchipping showed **no statistically detectable improvement** in recovery in 
 This is easy to misread. It is not evidence that microchips are useless, and nothing in this
 project should be taken as discouraging microchipping. The most likely explanation is the same
 one as everything else here: a microchip only helps if someone scans it, scanning happens at
-shelters and vets, and under 2% of these cats reached one. The chip works fine — the cat just
+shelters and vets, and under 2% of these cats reached one. The chip works fine, the cat just
 never got to a scanner.
 
 Keep your cat chipped and keep the registration current. Then go search the neighbour's shed.
@@ -165,7 +171,7 @@ on it for anything consequential.
 
 Compiled 2026-08-20 by an AI agent from the sources linked above: the Huang et al. paper via
 PubMed Central, the MAR Network's published case data, and a statute aggregator for § 31752. The
-paper's figures were taken from the article text rather than from secondary summaries — an
+paper's figures were taken from the article text rather than from secondary summaries, an
 intermediate search summary of this same paper misreported the indoor-only median as 137 m, which
 is in fact the 75th percentile. Where this document cites the paper, the figure came from the
 article.

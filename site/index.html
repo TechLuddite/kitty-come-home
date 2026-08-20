@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kitty Come Home, find an escaped indoor cat</title>
+<meta name="description" content="Your indoor cat is probably hiding within a few houses and may not come when called. A step-by-step search protocol based on published research. Free, offline, no account.">
+<meta name="theme-color" content="#0c0e11">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔦</text></svg>">
+<style>
+:root{
+  --bg:#0c0e11; --panel:#14181d; --panel2:#1a1f26; --line:#28303a;
+  --ink:#eef2f6; --ink2:#a8b4c2; --ink3:#7c8899;
+  --torch:#ffc663; --torch-dim:#3a2f18;
+  --alert:#ff8a6b; --ok:#6fd08c;
+  --maxw:46rem;
+}
+html[data-night="on"]{
+  --bg:#000; --panel:#0d0402; --panel2:#140603; --line:#3d1409;
+  --ink:#ff6a48; --ink2:#c4432c; --ink3:#8d2f1e;
+  --torch:#ff5a34; --torch-dim:#2a0b05;
+  --alert:#ff5a34; --ok:#c4432c;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:400 1.0625rem/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding-bottom:5rem;
+}
+html[data-night="on"] body{filter:brightness(.82)}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 1.15rem}
+h1,h2,h3{line-height:1.2; margin:0 0 .5rem; font-weight:700; letter-spacing:-.015em}
+h1{font-size:clamp(1.9rem,6.5vw,2.7rem)}
+h2{font-size:clamp(1.4rem,4.6vw,1.85rem); margin-top:0}
+h3{font-size:1.1rem; margin-top:1.6rem}
+p{margin:0 0 1rem}
+a{color:var(--torch)}
+strong{color:#fff}
+html[data-night="on"] strong{color:var(--torch)}
+hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
+
+/* ---------- masthead ---------- */
+header.top{padding-top:2.2rem;padding-bottom:1.2rem}
+.brand{display:flex;align-items:center;gap:.6rem;font-weight:700;font-size:.95rem;
+  letter-spacing:.02em;color:var(--ink2);margin-bottom:1.4rem}
+.brand .dot{width:.62rem;height:.62rem;border-radius:50%;background:var(--torch);
+  box-shadow:0 0 12px var(--torch);flex:none}
+.tagline{color:var(--ink2);font-size:1.12rem;margin-bottom:1.5rem}
+
+/* ---------- the one thing ---------- */
+.keystone{
+  background:linear-gradient(180deg,var(--panel2),var(--panel));
+  border:1px solid var(--line); border-left:4px solid var(--torch);
+  border-radius:.7rem; padding:1.3rem 1.25rem; margin:0 0 1.6rem;
+}
+.keystone .lede{font-size:1.22rem;font-weight:700;color:#fff;margin-bottom:.75rem;line-height:1.35}
+html[data-night="on"] .keystone .lede{color:var(--torch)}
+.keystone p:last-child{margin-bottom:0}
+.keystone .why{color:var(--ink2);font-size:.98rem}
+
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin:1.5rem 0 2rem}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:.6rem;padding:.85rem .9rem}
+.stat b{display:block;font-size:1.75rem;line-height:1.1;color:var(--torch);font-variant-numeric:tabular-nums}
+.stat span{display:block;font-size:.84rem;color:var(--ink2);margin-top:.3rem;line-height:1.35}
+
+.cta{display:block;text-align:center;background:var(--torch);color:#14100a;
+  font-weight:800;font-size:1.16rem;text-decoration:none;padding:1.05rem 1rem;
+  border-radius:.6rem;margin:0 0 .7rem;letter-spacing:.01em}
+html[data-night="on"] .cta{background:var(--torch);color:#100200}
+.cta.secondary{background:transparent;color:var(--ink);border:1px solid var(--line);font-weight:600;font-size:1rem}
+
+/* ---------- nav ---------- */
+nav.toc{background:var(--panel);border:1px solid var(--line);border-radius:.6rem;padding:.35rem;margin:2rem 0}
+nav.toc a{display:block;padding:.6rem .8rem;color:var(--ink);text-decoration:none;
+  border-radius:.4rem;font-size:.98rem}
+nav.toc a:hover,nav.toc a:focus{background:var(--panel2)}
+nav.toc a .n{color:var(--ink3);font-variant-numeric:tabular-nums;margin-right:.55rem}
+
+/* ---------- steps ---------- */
+section{scroll-margin-top:1rem}
+.step{border-top:1px solid var(--line);padding-top:2rem;margin-top:2.4rem}
+.kicker{font-size:.8rem;letter-spacing:.09em;text-transform:uppercase;color:var(--torch);
+  font-weight:700;margin-bottom:.45rem}
+
+ol.checks{list-style:none;padding:0;margin:1.2rem 0;counter-reset:c}
+ol.checks>li{
+  counter-increment:c; position:relative; background:var(--panel);
+  border:1px solid var(--line); border-radius:.55rem;
+  margin-bottom:.5rem; display:flex; align-items:flex-start; gap:.75rem;
+}
+ol.checks>li>label{display:flex;align-items:flex-start;gap:.8rem;padding:.9rem 1rem;
+  cursor:pointer;width:100%;-webkit-tap-highlight-color:transparent}
+ol.checks input{appearance:none;-webkit-appearance:none;flex:none;width:1.6rem;height:1.6rem;
+  border:2px solid var(--ink3);border-radius:.35rem;margin:.05rem 0 0;cursor:pointer;
+  position:relative;background:transparent}
+ol.checks input:checked{background:var(--ok);border-color:var(--ok)}
+ol.checks input:checked::after{content:"";position:absolute;left:.42rem;top:.14rem;
+  width:.36rem;height:.75rem;border:solid #0c0e11;border-width:0 3px 3px 0;transform:rotate(45deg)}
+ol.checks input:focus-visible{outline:2px solid var(--torch);outline-offset:2px}
+ol.checks .txt{flex:1}
+ol.checks .txt b{display:block;color:#fff;margin-bottom:.15rem}
+html[data-night="on"] ol.checks .txt b{color:var(--torch)}
+ol.checks .txt small{display:block;color:var(--ink2);font-size:.93rem;line-height:1.5;margin-top:.2rem}
+ol.checks>li:has(input:checked){opacity:.5}
+ol.checks>li:has(input:checked) .txt b{text-decoration:line-through}
+
+.note{background:var(--panel);border-left:3px solid var(--ink3);padding:.85rem 1rem;
+  border-radius:0 .45rem .45rem 0;margin:1.2rem 0;color:var(--ink2);font-size:.97rem}
+.note.warn{border-left-color:var(--alert)}
+.note.warn b{color:var(--alert)}
+.note b{color:#fff}
+html[data-night="on"] .note b{color:var(--torch)}
+
+ul.plain{padding-left:1.15rem;margin:1rem 0}
+ul.plain li{margin-bottom:.45rem}
+
+table{width:100%;border-collapse:collapse;margin:1.2rem 0;font-size:.95rem}
+.scroller{overflow-x:auto;-webkit-overflow-scrolling:touch}
+th,td{text-align:left;padding:.6rem .7rem;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--ink2);font-size:.83rem;text-transform:uppercase;letter-spacing:.05em}
+td b{color:var(--torch)}
+
+/* ---------- night toggle ---------- */
+.tray{position:fixed;left:0;right:0;bottom:0;z-index:40;
+  background:color-mix(in srgb,var(--bg) 92%,transparent);
+  backdrop-filter:blur(10px);border-top:1px solid var(--line);
+  padding:.55rem 1rem calc(.55rem + env(safe-area-inset-bottom))}
+.tray .inner{max-width:var(--maxw);margin:0 auto;display:flex;gap:.5rem;align-items:center}
+.tray button{flex:1;background:var(--panel2);color:var(--ink);border:1px solid var(--line);
+  border-radius:.5rem;padding:.7rem .5rem;font:inherit;font-size:.9rem;font-weight:600;cursor:pointer}
+.tray button[aria-pressed="true"]{background:var(--torch-dim);border-color:var(--torch);color:var(--torch)}
+.tray a.top-link{flex:none;background:var(--panel2);color:var(--ink);border:1px solid var(--line);
+  border-radius:.5rem;padding:.7rem .85rem;text-decoration:none;font-size:.9rem;font-weight:600}
+
+footer{border-top:1px solid var(--line);margin-top:3.5rem;padding:2rem 0 1rem;color:var(--ink3);font-size:.9rem}
+footer a{color:var(--ink2)}
+footer .fnav{display:flex;flex-wrap:wrap;gap:1.1rem;margin-bottom:1.4rem}
+footer .fnav a{color:var(--torch);text-decoration:none;font-weight:600}
+
+.printonly{display:none}
+
+@media print{
+  :root{--bg:#fff;--panel:#fff;--panel2:#fff;--line:#bbb;--ink:#000;--ink2:#333;--ink3:#666;--torch:#000}
+  body{font-size:10.5pt;padding:0;filter:none!important}
+  .tray,nav.toc,.cta,.no-print{display:none!important}
+  .printonly{display:block}
+  .step{page-break-inside:avoid;border-top:1px solid #bbb}
+  ol.checks>li{border:1px solid #999;page-break-inside:avoid}
+  ol.checks>li:has(input:checked){opacity:1}
+  ol.checks>li:has(input:checked) .txt b{text-decoration:none}
+  a{color:#000;text-decoration:underline}
+  .keystone{border:2px solid #000}
+  h1{font-size:20pt}
+  @page{margin:1.4cm}
+}
+@media (min-width:38rem){ .stats{grid-template-columns:repeat(4,1fr)} }
+@media (prefers-reduced-motion:no-preference){ html{scroll-behavior:smooth} }
+</style>
+</head>
+<body>
+
+<header class="top wrap">
+  <div class="brand"><span class="dot"></span> KITTY COME HOME</div>
+  <h1>Your indoor cat got out.</h1>
+  <p class="tagline">Here is what actually works, in the order to do it. Free, no account, works offline once loaded.</p>
+
+  <div class="keystone">
+    <p class="lede">She has not run away. She is hiding, close, and she may not answer you.</p>
+    <p class="why">Indoor cats that escape bolt a short distance and then hide. The median distance from the door is <strong>39 metres</strong>. Three quarters of cats are found within 500 m. A frightened cat's instinct is to stay hidden and still, so she may well hear you and not come out, and that can last for days.</p>
+    <p class="why" style="margin-top:.8rem"><strong>Keep calling. Just do not stop there.</strong> Calling her name is one of the tactics owners reported alongside getting their cat back, so it is worth doing every time you go out. What it is not is a test. If you call and nothing happens, that tells you almost nothing about whether she is ten feet away.</p>
+    <p class="why" style="margin-top:.8rem">This is the mistake that costs people their cats: they call, get silence, conclude she is not there, and go and search somewhere else. <strong>Search as though she cannot answer, and be glad when she does.</strong></p>
+  </div>
+
+  <a class="cta" href="#now">Start here → the first hour</a>
+  <a class="cta secondary" href="#tonight">It is already dark → go to the night search</a>
+
+  <div class="stats">
+    <div class="stat"><b>39 m</b><span>Median distance found, indoor-only cats</span></div>
+    <div class="stat"><b>83%</b><span>Found outside, not in a building</span></div>
+    <div class="stat"><b>&lt;2%</b><span>Found in a shelter</span></div>
+    <div class="stat"><b>61%</b><span>Found alive within a year. Do not give up</span></div>
+  </div>
+
+  <nav class="toc no-print" aria-label="Contents">
+    <a href="#now"><span class="n">1</span> The first hour</a>
+    <a href="#tonight"><span class="n">2</span> Tonight: the night search</a>
+    <a href="#station"><span class="n">3</span> Tonight: food and a camera</a>
+    <a href="#neighbours"><span class="n">4</span> Tomorrow: the neighbours</a>
+    <a href="#admin"><span class="n">5</span> Tomorrow: listings and shelters</a>
+    <a href="#grid"><span class="n">6</span> Keeping track of where you looked</a>
+    <a href="#found"><span class="n">7</span> When you see her</a>
+    <a href="#keepgoing"><span class="n">8</span> Do not stop at day seven</a>
+    <a href="#evidence"><span class="n">9</span> Where these numbers come from</a>
+  </nav>
+</header>
+
+<main class="wrap">
+
+<section id="now" class="step">
+  <div class="kicker">Step 1 · right now</div>
+  <h2>The first hour</h2>
+  <p>Do these in order. Do not skip the first one, however certain you are that she got out.</p>
+
+  <ol class="checks" data-key="now">
+    <li><label><input type="checkbox"><span class="txt"><b>Search your own home. Completely.</b>
+      <small>4% of found cats never left. Inside sofa bases and box springs, behind and under every appliance, in cupboards and wardrobes, the back of closets, the dryer, the loft, the basement, the garage. Move things. Use a torch. A cat flattens into spaces you would swear were solid.</small></span></label></li>
+    <li><label><input type="checkbox"><span class="txt"><b>Prop the door open if you safely can.</b>
+      <small>Cats often come back on their own in the quiet hours before dawn. Put her litter tray just outside the door: the smell is a strong navigation cue.</small></span></label></li>
+    <li><label><input type="checkbox"><span class="txt"><b>Silence the house and go outside and stand still.</b>
+      <small>TV off, music off. Stand outside for two full minutes and just listen before you search anything. You are listening for a rustle, a bell, one short cry.</small></span></label></li>
+    <li><label><input type="checkbox"><span class="txt"><b>Search the ground against your own house first.</b>
+      <small>Under the deck or porch, the crawlspace, under the steps, in the shrubs against the wall, under your own parked cars, the shed, the garage, behind the bins. A cat that bolts out of a door often does not get past its own property.</small></span></label></li>
+    <li><label><input type="checkbox"><span class="txt"><b>Then work outward on foot. Do not drive.</b>
+      <small>You cannot see under a hedge at 20 mph, and she is 39 metres away, not three kilometres.</small></span></label></li>
+  </ol>
+</section>
+
+<section id="tonight" class="step">
+  <div class="kicker">Step 2 · tonight, and every night this week</div>
+  <h2>The night search</h2>
+  <p><strong>This is the single most valuable thing you will do.</strong> A cat that will not move at 2pm with traffic and dogs about will often shift position at 2am. And in the dark you get an advantage you do not have in daylight: <strong>eyeshine</strong>. A cat's eyes throw a torch beam back brilliantly from a long way off, from inside a space you could never see into by day.</p>
+
+  <ol class="checks" data-key="tonight">
+    <li><label><input type="checkbox"><span class="txt"><b>Go out between midnight and 4am.</b>
+      <small>When the street is at its quietest. Yes, really. This is the hour that works.</small></span></label></li>
+    <li><label><input type="checkbox"><span class="txt"><b>Hold the torch at eye level, beside your temple.</b>
+      <small>This is the part people get wrong. Eyeshine only comes back along the line it went out, so a torch held down at your hip shows you nothing. Use a proper torch, not a phone.</small></span></label></li>
+    <li><label><input type="checkbox"><span class="txt"><b>Sweep low and level, and move slowly.</b>
+      <small>Under decks, under cars, under sheds, into drains and culverts, hedge bases, woodpiles, porches, crawlspace vents, gaps under fences.</small></span></label></li>
+    <li><label><input type="checkbox"><span class="txt"><b>Stop every 20 metres. Stand still. Listen for a full minute.</b>
+      <small>Then move on. Go slowly enough that it feels absurd. A proper search of a five-house radius takes over an hour. That is correct.</small></span></label></li>
+    <li><label><input type="checkbox"><span class="txt"><b>Call in your normal soft voice, then be silent for thirty seconds.</b>
+      <small>The tone you use at home for something good, not the alarmed voice. Shake a treat bag or tap a food tin, then stop and listen properly before making another sound. Whether she answers depends on the cat, on how frightened she is and on how long she has been out, so keep calling on every trip and treat any answer as a bonus rather than the plan.</small></span></label></li>
+  </ol>
+  <div class="note warn"><b>If you see eyeshine, do not rush at it.</b> Read <a href="#found">step 7</a> before you go out, not after.</div>
+</section>
+
+<section id="station" class="step">
+  <div class="kicker">Step 3 · before you sleep</div>
+  <h2>Food and a camera</h2>
+  <p>This is what searches while you sleep, and over a long search it is where most confirmed sightings come from. Set it up tonight.</p>
+
+  <ol class="checks" data-key="station">
+    <li><label><input type="checkbox"><span class="txt"><b>Put it at the exact point she escaped from.</b>
+      <small>The actual door or window, not the front porch because it is convenient. She navigates by familiar smell and that is the spot with the most of it.</small></span></label></li>
+    <li><label><input type="checkbox"><span class="txt"><b>Strong-smelling food, and water.</b>
+      <small>Tuna, sardines, the smelliest wet food you have. Smell is the entire point, so dry food does not do it. Refresh it daily.</small></span></label></li>
+    <li><label><input type="checkbox"><span class="txt"><b>Put out her unemptied litter tray.</b>
+      <small>Counter-intuitive and genuinely effective. It is the strongest scent marker of home territory you have.</small></span></label></li>
+    <li><label><input type="checkbox"><span class="txt"><b>Add something that smells of you and of home.</b>
+      <small>An unwashed t-shirt, her bed, a blanket she slept on. In bad weather add a box or carrier on its side with the bedding inside, opening away from the wind.</small></span></label></li>
+    <li><label><input type="checkbox"><span class="txt"><b>Point a camera at it, low down.</b>
+      <small>A cheap trail camera is best by a distance: infrared, battery, weatherproof, made for exactly this. A doorbell camera or an old phone will do. Mount it 30 to 45 cm off the ground, filling the frame with the food. Aim it away from the road and away from neighbours' windows.</small></span></label></li>
+  </ol>
+
+  <div class="note"><b>Expect hundreds of clips a night</b>, nearly all raccoons, opossums, other cats and moving branches. Skim the 11pm to 5am window first and look for the low smooth movement and the eyeshine. Keep a week of footage: a clip that means nothing tonight means a lot after a sighting three streets away.</div>
+  <div class="note warn"><b>Night footage is greyscale, so colour tells you nothing.</b> Judge on markings, pattern and proportion. Do not conclude from one bad clip either way. The common mistake is deciding a blurred grey shape is definitely not your cat, taking the station down, and losing the one thing that was working.</div>
+</section>
+
+<section id="neighbours" class="step">
+  <div class="kicker">Step 4 · first thing tomorrow</div>
+  <h2>The neighbours</h2>
+  <p><strong>11% of found cats were inside someone else's house or building</strong>, a garage, a shed, a basement. You cannot search those. Somebody has to ask, and that somebody is you.</p>
+  <p>Knock. A flyer through the door produces sympathy; what you need is for a person to walk to the back of their garage and shine a light behind the freezer. Almost nobody does that because of a leaflet. A fair number will do it because someone stood at their door and asked.</p>
+
+  <div class="note"><b>What to say.</b> "My indoor cat got out on Tuesday. She's a grey tabby, and she's never been outside before, so she'll be hiding rather than wandering. <b>She often won't come out even if she hears you, so please don't take quiet as a no.</b> Would you mind opening your shed and garage and having a proper look with a torch? Under the deck too. Here's a photo and my number, any time of night is fine, honestly."</div>
+
+  <ol class="checks" data-key="neighbours">
+    <li><label><input type="checkbox"><span class="txt"><b>Say that she may not come when called.</b>
+      <small>The single most important line. Otherwise they stand in the garden calling for ten seconds, hear nothing, and report back that she is not there. Silence is not evidence.</small></span></label></li>
+    <li><label><input type="checkbox"><span class="txt"><b>Ask them to look with a torch, and name the places.</b>
+      <small>Shed, garage, under the deck, crawlspace, under the car. A glance from the doorway finds nothing.</small></span></label></li>
+    <li><label><input type="checkbox"><span class="txt"><b>Ask the second question: can I check anywhere on your property?</b>
+      <small>"Have you seen her" is the question people expect. "Is there anywhere I could check" is the one that finds cats.</small></span></label></li>
+    <li><label><input type="checkbox"><span class="txt"><b>Ask whether anyone has started feeding an unfamiliar cat.</b>
+      <small>People feed a cat they assume is a stray for weeks without connecting it to a lost-cat flyer, especially if it looks healthy.</small></span></label></li>
+    <li><label><input type="checkbox"><span class="txt"><b>Say to call at any hour.</b>
+      <small>People sit on a 1am sighting until morning because they do not want to disturb you. Say it out loud.</small></span></label></li>
+    <li><label><input type="checkbox"><span class="txt"><b>Cover five houses in every direction, then go wider.</b>
+      <small>92% of displaced indoor cats in one case series were found within a five-house radius. Prioritise anywhere with a shed, garage, deck, crawlspace, building work, or a car that has not moved in a while.</small></span></label></li>
+    <li><label><input type="checkbox"><span class="txt"><b>Go back in three or four days.</b>
+      <small>The shed gets opened, someone starts leaving food out, the neighbour who was away comes home. The second pass regularly produces what the first did not.</small></span></label></li>
+  </ol>
+</section>
+
+<section id="admin" class="step">
+  <div class="kicker">Step 5 · tomorrow, once</div>
+  <h2>Listings and shelters</h2>
+  <p>These matter, and they are deliberately listed after the physical search. Under 2% of found cats were found in a shelter. Do these once, properly, then get back outside.</p>
+
+  <ol class="checks" data-key="admin">
+    <li><label><input type="checkbox"><span class="txt"><b>File on Petco Love Lost.</b>
+      <small>Free, national, has photo matching, and most shelters use it. Upload several clear photos from different angles. <a href="https://lost.petcolove.org/" rel="noopener">lost.petcolove.org</a></small></span></label></li>
+    <li><label><input type="checkbox"><span class="txt"><b>Post on PawBoost.</b>
+      <small>Free to post, wide local social reach. <a href="https://www.pawboost.com/" rel="noopener">pawboost.com</a></small></span></label></li>
+    <li><label><input type="checkbox"><span class="txt"><b>Post in local lost-pet Facebook groups, Nextdoor and Ring Neighbors.</b>
+      <small>This is where nearby sightings actually surface.</small></span></label></li>
+    <li><label><input type="checkbox"><span class="txt"><b>Visit the shelters in person and walk the kennels yourself.</b>
+      <small>Do not just phone. Descriptions get logged wrong, and a "grey tabby" in the system may be yours. Go back every few days. In California a stray cat must be held six business days, or four under some conditions, not counting the day it arrived.</small></span></label></li>
+    <li><label><input type="checkbox"><span class="txt"><b>Call local vets and rescues.</b>
+      <small>An injured found cat goes to a vet, not a shelter.</small></span></label></li>
+    <li><label><input type="checkbox"><span class="txt"><b>Check your microchip registration is current.</b>
+      <small>Right phone number, right address.</small></span></label></li>
+    <li><label><input type="checkbox"><span class="txt"><b>Put up big signs at corners and junctions.</b>
+      <small>Few words, huge photo, readable from a moving car: LOST CAT, photo, phone number, and the line "may not come when called, please check sheds and garages".</small></span></label></li>
+  </ol>
+</section>
+
+<section id="grid" class="step">
+  <div class="kicker">Step 6 · from day one</div>
+  <h2>Keeping track of where you looked</h2>
+  <p>After two days every garden looks like one you already checked. People re-search the easy, well-lit half of the radius over and over and never once look in the culvert. Write it down. A notebook is enough.</p>
+
+  <div class="scroller">
+  <table>
+    <thead><tr><th>Ring</th><th>Distance</th><th>Priority</th></tr></thead>
+    <tbody>
+      <tr><td><b>0</b></td><td>Your own property</td><td>First, completely, then again</td></tr>
+      <tr><td><b>1</b></td><td>~50 m, the adjacent five houses</td><td><b>Highest.</b> The median find is 39 m</td></tr>
+      <tr><td><b>2</b></td><td>~150 m</td><td>High</td></tr>
+      <tr><td><b>3</b></td><td>~500 m</td><td>Only after 1 and 2 are properly done</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p><strong>Resist the urge to widen.</strong> As days pass the instinct is to search further out. The evidence says the opposite: search the same close ground more carefully, at a better hour, with a better torch.</p>
+
+  <h3>Record three outcomes, not two</h3>
+  <div class="scroller">
+  <table>
+    <tbody>
+      <tr><td><b>Searched</b></td><td>The torch went in. You saw the whole space. Nothing there.</td></tr>
+      <tr><td><b>Partial</b></td><td>You looked but could not see all of it. <b>Treat as unsearched.</b> Go back.</td></tr>
+      <tr><td><b>Blocked</b></td><td>Locked shed, no answer at the door. <b>These are your best targets.</b></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>The blocked list matters more than the searched list. Those 11% of cats found in someone else's building were sitting on a blocked line in somebody's notebook until a person opened a door.</p>
+  <p>A place does not stay searched. She moves, usually at night, usually after the first day or two of lying still. Re-search ring 1 every night, and at a different hour than last time. After any credible sighting, re-search everything within 50 m of it immediately.</p>
+</section>
+
+<section id="found" class="step">
+  <div class="kicker">Step 7 · read this before you need it</div>
+  <h2>When you see her</h2>
+  <p>Eyeshine under a deck at 2am. <strong>What you do in the next sixty seconds decides whether this ends tonight or runs another week.</strong></p>
+  <div class="note warn"><b>Do not assume she will react to you the way she normally does.</b> The instinct is relief, then stepping forward, then a raised happy voice. Some cats do run straight to their owner. A frightened one in survival mode may read a fast approach as a predator, bolt, and relocate somewhere you have not searched. You cannot tell which you have got until you slow down, so slow down.</div>
+
+  <ol class="checks" data-key="found">
+    <li><label><input type="checkbox"><span class="txt"><b>Stop moving the instant you see her.</b><small>Do not take another step.</small></span></label></li>
+    <li><label><input type="checkbox"><span class="txt"><b>Get low. Sit or crouch.</b><small>Standing over a hiding cat is threatening.</small></span></label></li>
+    <li><label><input type="checkbox"><span class="txt"><b>Look away, blink slowly, speak quietly.</b><small>A direct stare is a threat signal. Use the normal soft voice, and do not raise it in relief.</small></span></label></li>
+    <li><label><input type="checkbox"><span class="txt"><b>Angle the torch at the ground, not her face.</b><small>You can still see her, and she is not being dazzled by a predator.</small></span></label></li>
+    <li><label><input type="checkbox"><span class="txt"><b>Wait. Minutes, not seconds. Do not block her exit.</b><small>Let her decide you are safe. A cornered cat panics.</small></span></label></li>
+    <li><label><input type="checkbox"><span class="txt"><b>If she comes, let her come the whole way. Do not reach out.</b><small>When she is against you and settled, pick her up firmly, hold her to your body, and go straight inside.</small></span></label></li>
+  </ol>
+
+  <h3>If she will not come</h3>
+  <p>Common, and not a bad sign. Do not force it. Leave food right there, back off out of sight, and note the exact spot. Move the feeding station and camera there tonight. For a cat that is visible but unapproachable, a humane trap is usually the answer, and pushing the approach instead is usually what loses her.</p>
+  <p>Borrow a trap: shelters, TNR groups and rescues commonly lend them free. Set it where she already feeds, cover it with a blanket top and sides so it reads as a tunnel, put the food past the trip plate, and pre-bait it tied open for a night first if you can.</p>
+  <div class="note warn"><b>Never leave a set trap unattended.</b> Check it at least hourly, through the night. A trapped animal cannot escape weather, a predator, or someone with bad intentions. If you cannot commit to checking hourly, do not set it tonight.</div>
+  <p>When you catch her: <strong>do not open the trap outside</strong>, not even for a moment. Cover it, carry it into one small closed room, shut the door, then open the trap and leave her to come out alone. Expect her to hide and be unlike herself for days. Get her to a vet within a day or two even if she looks fine.</p>
+  <p>If she is somewhere you cannot reach, a wall cavity, under a building, up a tree, do not try to force her out. No hose, no broom, no dog. Leave food at the opening, put the camera on it, and ask your shelter or a trained searcher.</p>
+</section>
+
+<section id="keepgoing" class="step">
+  <div class="kicker">Step 8</div>
+  <h2>Do not give up at day seven</h2>
+  <p>34% of cats are recovered by day 7. But 50% by day 30, and 61% within a year. <strong>A cat found at week six is an ordinary outcome, not a miracle.</strong> Displaced cats often stay hidden for days before they start moving and feeding, and that is exactly when the feeding station and the camera start earning their keep.</p>
+  <p>Keep the station stocked. Keep the night searches going. Keep going back to the neighbours.</p>
+</section>
+
+<section id="evidence" class="step">
+  <div class="kicker">Sources</div>
+  <h2>Where these numbers come from</h2>
+  <p>Almost everything here traces to one study: <strong>Huang, Coradini, Rand, Morton, Albrecht, Wasson and Robertson (2018), "Search Methods Used to Locate Missing Cats and Locations Where Missing Cats Are Found," <em>Animals</em> 8(1):5</strong>, a retrospective case series of 1,210 missing cats at the University of Queensland. <a href="https://doi.org/10.3390/ani8010005" rel="noopener">doi.org/10.3390/ani8010005</a></p>
+  <p>The five-house radius figure and the behavioural model come from the <a href="https://www.missinganimalresponse.com/" rel="noopener">Missing Animal Response Network</a>, whose founder Kat Albrecht is an author on that study.</p>
+
+  <h3>Where we are being careful</h3>
+  <ul class="plain">
+    <li><strong>Physical searching reached p = 0.071.</strong> That is the strongest method signal in the study and it does not clear the conventional 0.05 threshold. We recommend it because three independent lines of evidence agree, not because any one is conclusive.</li>
+    <li><strong>The behavioural model is practitioner experience</strong>, not a controlled finding. It is consistent with the distance data, and several steps here depend on it.</li>
+    <li><strong>Microchipping showed no detectable effect</strong> in this data (p = 0.331). That is not an argument against microchips. A chip only helps at a scanner, and under 2% of these cats reached one. Keep your cat chipped.</li>
+    <li><strong>The sample was self-selected</strong> and largely suburban. Dense urban and rural settings may behave differently.</li>
+  </ul>
+  <p>The full evidence write-up, including every caveat and the working, is in the <a href="https://github.com/TechLuddite/kitty-come-home/blob/main/docs/evidence.md" rel="noopener">project repository</a>.</p>
+  <div class="note"><b>If something here is wrong, please tell us.</b> If you do this work (shelter or rescue staff, TNR trappers, trained searchers) or you found your own cat and learned something the hard way, please <a href="https://github.com/TechLuddite/kitty-come-home/issues/new/choose" rel="noopener">open an issue</a>. Field experience counts as evidence. This is the part where being wrong has a real cost.</div>
+</section>
+
+<div class="printonly" style="margin-top:2rem;border-top:2px solid #000;padding-top:1rem">
+  <p style="font-size:9pt"><strong>kittycomehome.opsvibe.systems</strong> · Free to print, copy and hand out (CC BY 4.0) · Not veterinary advice.</p>
+</div>
+
+</main>
+
+<footer class="wrap">
+  <div class="fnav no-print">
+    <a href="#now">Back to the top</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="support.html">Support &amp; credits</a>
+    <a href="https://github.com/TechLuddite/kitty-come-home" rel="noopener">Source</a>
+  </div>
+  <p>Print this page and hand it to someone. The protocol is CC BY 4.0 and it is meant to be copied, translated and pinned to a shelter noticeboard.</p>
+  <p>This site has no accounts, no analytics, no cookies, and no tracking of any kind. Your checkbox ticks are stored in your own browser and are never sent anywhere. <a href="privacy.html">The full detail, including what GitHub can see, is here.</a></p>
+  <p>Not veterinary advice. If your animal is injured, contact a vet.</p>
+</footer>
+
+<div class="tray no-print">
+  <div class="inner">
+    <button id="night" type="button" aria-pressed="false">🔦 Night mode</button>
+    <button id="reset" type="button">Clear ticks</button>
+    <a class="top-link" href="#now">↑</a>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var LS = null;
+  try { LS = window.localStorage; LS.setItem("__t","1"); LS.removeItem("__t"); } catch(e){ LS = null; }
+  function get(k){ try { return LS && LS.getItem(k); } catch(e){ return null; } }
+  function set(k,v){ try { LS && LS.setItem(k,v); } catch(e){} }
+  function del(k){ try { LS && LS.removeItem(k); } catch(e){} }
+
+  // Night mode: red on black, dimmed. Keeps your dark adaptation for the torch work.
+  var nightBtn = document.getElementById("night");
+  function applyNight(on){
+    document.documentElement.setAttribute("data-night", on ? "on" : "off");
+    nightBtn.setAttribute("aria-pressed", on ? "true" : "false");
+    nightBtn.textContent = on ? "☀ Normal mode" : "🔦 Night mode";
+    var m = document.querySelector('meta[name="theme-color"]');
+    if (m) m.setAttribute("content", on ? "#000000" : "#0c0e11");
+  }
+  applyNight(get("kch.night") === "1");
+  nightBtn.addEventListener("click", function(){
+    var on = document.documentElement.getAttribute("data-night") !== "on";
+    applyNight(on); set("kch.night", on ? "1" : "0");
+  });
+
+  // Checklist state, per section, in this browser only. Nothing leaves the device.
+  var lists = document.querySelectorAll("ol.checks");
+  Array.prototype.forEach.call(lists, function(list){
+    var key = "kch.ck." + list.getAttribute("data-key");
+    var saved = (get(key) || "").split(",");
+    var boxes = list.querySelectorAll('input[type="checkbox"]');
+    Array.prototype.forEach.call(boxes, function(box, i){
+      if (saved.indexOf(String(i)) !== -1) box.checked = true;
+      box.addEventListener("change", function(){
+        var on = [];
+        Array.prototype.forEach.call(boxes, function(b, j){ if (b.checked) on.push(j); });
+        if (on.length) set(key, on.join(",")); else del(key);
+      });
+    });
+  });
+
+  document.getElementById("reset").addEventListener("click", function(){
+    if (!window.confirm("Clear every tick on this page? Your search notes elsewhere are not affected.")) return;
+    Array.prototype.forEach.call(document.querySelectorAll('ol.checks input[type="checkbox"]'), function(b){ b.checked = false; });
+    Array.prototype.forEach.call(lists, function(list){ del("kch.ck." + list.getAttribute("data-key")); });
+  });
+
+  // Offline. Guarded: sandboxed previews and file:// have no SW, and that is fine.
+  if ("serviceWorker" in navigator && location.protocol === "https:") {
+    window.addEventListener("load", function(){
+      navigator.serviceWorker.register("sw.js").catch(function(){});
+    });
+  }
+})();
+</script>
+</body>
+</html>

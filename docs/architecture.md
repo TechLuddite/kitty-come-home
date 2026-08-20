@@ -1,10 +1,10 @@
 # Architecture
 
-Version 1 — 2026-08-20. Status: proposal. Nothing is deployed; there is no Supabase project yet.
+Version 1 to 2026-08-20. Status: proposal. Nothing is deployed; there is no Supabase project yet.
 
 ## 1. Summary
 
-Supabase as the whole backend — Postgres with PostGIS, Auth, Storage, Realtime, Edge Functions,
+Supabase as the whole backend. Postgres with PostGIS, Auth, Storage, Realtime, Edge Functions,
 and row-level security carrying the privacy requirements. A single web client, mobile-first,
 installable, and usable offline for the parts that matter in a garden at 2am.
 
@@ -20,7 +20,7 @@ corresponds to something the protocol tells a person to do on paper.
 2. **The user is distressed.** No feature may require exploration. Every screen states the next
    action.
 3. **It must be free to run at small scale**, because charging distressed pet owners at the point
-   of use is both distasteful and commercially hopeless — every meaningful competitor is free.
+   of use is both distasteful and commercially hopeless, every meaningful competitor is free.
    This constrains inference cost hard, and is a large part of why camera triage runs on-device.
 4. **It must degrade to paper.** Every feature has a printable equivalent, and the protocol
    documents stand alone. If the service is down, nobody's search stops.
@@ -73,7 +73,7 @@ The free tier is sufficient for development and early real use.
 
 ## 5. Data model
 
-First cut in [`../supabase/migrations/00000000000000_init.sql`](../supabase/migrations/00000000000000_init.sql).
+First cut in [`../supabase/migrations/`](../supabase/migrations/).
 
 | Table | Holds | Protocol step |
 |---|---|---|
@@ -94,7 +94,7 @@ repeatedly, at different hours, with different results. The protocol is emphatic
 search and a 2am search of the same shed are two different searches, and the schema has to hold
 that or the feature lies to the user.
 
-**`properties.access_state` is first-class.** `blocked` — a locked shed, nobody home — is the
+**`properties.access_state` is first-class.** `blocked`, a locked shed, nobody home, is the
 highest-value queue in the system, because 11% of found cats were inside somebody else's building.
 The app's job is to keep that list in front of the owner until each line is resolved.
 
@@ -128,15 +128,15 @@ is a better fit.
 Offline matters. The protocol documents, the grid, and the map tiles for the immediate radius are
 cached; grid entries and sightings are captured offline and sync when signal returns.
 
-Dark theme by default — this is used outdoors at night, and a bright screen costs the user the
+Dark theme by default, this is used outdoors at night, and a bright screen costs the user the
 dark-adaptation they need for the torch work.
 
 ## 8. Out of scope for v1
 
 - Shelter data ingestion of any kind. See [`adr/0001`](adr/0001-cats-first-not-an-aggregator.md).
 - Social auto-posting. The Facebook Groups API was removed in April 2024, which closes the surface
-  that would have mattered most, for both reading and posting. Assisted posting — generate the
-  content, hand the user a one-tap path into each app — is the version that can actually ship.
+  that would have mattered most, for both reading and posting. Assisted posting, generate the
+  content, hand the user a one-tap path into each app, is the version that can actually ship.
 - Native mobile apps.
 - Dogs, and cats with regular outdoor access. Different behaviour, different evidence, different
   protocol.

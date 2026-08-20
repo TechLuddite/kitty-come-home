@@ -31,5 +31,5 @@ You do not need a citation. Field experience counts as evidence here.
 
 - [ ] Someone following this could lose their cat
 - [ ] Misleading, but not dangerous
-- [ ] Incomplete — something useful is missing
+- [ ] Incomplete, something useful is missing
 - [ ] Minor wording

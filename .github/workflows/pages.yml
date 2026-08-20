@@ -1,0 +1,62 @@
+name: Deploy site to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'site/**'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deploy at a time. Do not cancel a running one: a half-finished deploy of a page
+# somebody may be reading in a garden at 2am is worse than waiting.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # The site must make no third-party requests. That is a promise on the privacy
+      # page, so it is checked here rather than trusted.
+      - name: No external origins in the site
+        run: |
+          if grep -rnoE 'https?://[^"'"'"' )]+' site/ \
+             | grep -vE '(github\.com|lost\.petcolove\.org|pawboost\.com|doi\.org|missinganimalresponse\.com|paypal\.com|tech2u\.com|halomsp\.com|docs\.github\.com|creativecommons\.org|w3\.org)' \
+             | grep -vE '^\S+:\s*$'; then
+            echo "::error::Unexpected external URL in site/. Add it to the privacy table and this allowlist, or remove it."
+            exit 1
+          fi
+          if grep -rnE '<(script|link|img|iframe)[^>]+(src|href)="https?://' site/; then
+            echo "::error::site/ loads a third-party subresource. The privacy page promises it does not."
+            exit 1
+          fi
+          echo "No third-party subresources. Privacy claim holds."
+
+      - name: CNAME matches the expected domain
+        run: |
+          test "$(cat site/CNAME)" = "kittycomehome.opsvibe.systems" \
+            || { echo "::error::site/CNAME does not match the configured custom domain."; exit 1; }
+
+  deploy:
+    needs: verify
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deployment
+        uses: actions/deploy-pages@v4

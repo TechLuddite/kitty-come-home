@@ -1,4 +1,4 @@
-# ADR 0004 — Location fuzzing, on-device video, and case expiry
+# ADR 0004: Location fuzzing, on-device video, and case expiry
 
 Date: 2026-08-20. Status: accepted.
 
@@ -20,7 +20,7 @@ rather than treating as the user's problem.
 
 Three specific exposures:
 
-**The escape point is the home address.** Not approximately — the protocol asks for the actual
+**The escape point is the home address.** Not approximately, the protocol asks for the actual
 door the cat went out of. A public case page with a precise pin is a published home address,
 attached to a photo of the property's contents, plus a reliable signal that the occupant is
 outdoors alone at 2am. We are not publishing that.
@@ -32,7 +32,7 @@ the owner's device, and it is the difference between a defensible answer and an 
 neighbour asks what the camera does. This reinforces a decision already taken on cost grounds in
 ADR 0003.
 
-**Abandoned listings become permanent records.** Lost-pet listings are rarely closed — the cat
+**Abandoned listings become permanent records.** Lost-pet listings are rarely closed, the cat
 comes home, or it does not, and either way nobody logs in again. Without expiry, the default
 outcome is a permanent public record of somebody's home address and daily pattern, indexed by
 search engines, attached to a sad story. Expiry has to be automatic, because relying on users to
@@ -45,7 +45,7 @@ place and a contributor cannot leak an address by forgetting a filter in a new e
 video processing is simultaneously cheaper, more private, and works offline. Anonymous sessions
 remove friction at the worst possible moment to ask for a signup.
 
-**Bad.** Fuzzed public locations make the public sighting map less immediately useful — a helper
+**Bad.** Fuzzed public locations make the public sighting map less immediately useful, a helper
 sees a circle rather than a pin. This is the correct trade and it will occasionally be annoying.
 On-device processing means the server cannot help debug a triage failure it never saw. Expiry will
 eventually delete a case somebody still cared about, so warnings before purge are required and the
@@ -53,7 +53,7 @@ window should be generous.
 
 **Accepted risk.** Fuzzing radius, expiry window, and warning schedule are all unset and need
 deciding before any public deployment. RLS policies in the initial migration are a sketch and have
-not been reviewed adversarially — they must be before the repository goes public with a live
+not been reviewed adversarially, they must be before the repository goes public with a live
 instance behind it.
 
 ## Options rejected
@@ -70,3 +70,24 @@ take the property.
 
 **Requiring accounts.** Rejected: friction at the exact moment the protocol says to move fast. The
 first hour matters more than our user table does.
+
+## Update, 2026-08-20: the public surface is not built yet
+
+The first schema shipped a `public_cases` view so that anon could read a fuzzed case list.
+The Supabase linter flagged it as a SECURITY DEFINER view, correctly: it read past RLS, which
+made its column list the only thing between the public and somebody's home address.
+
+That path, and the unauthenticated sighting-insert path beside it, were removed rather than
+patched. Neither is needed until the public case page exists, and an unauthenticated,
+unrate-limited write path shipped ahead of need is the wrong trade on exactly the data this
+ADR is about.
+
+The Phase 2 design is recorded in migration `20260820083146` so it is not re-derived: use
+column-level grants rather than a definer view, so that `anon` cannot read `escape_point`
+because the privilege does not exist, rather than because a view happened to omit it. That is
+a property rather than a promise, which is the preference this ADR already states about video.
+
+One lesson worth carrying: the hardening migration also revoked EXECUTE on the RLS helper
+functions, which broke every policy that called them while the linter reported clean. The
+linter checks configuration, not behaviour. Any change to policies needs the behaviour test
+run after it.

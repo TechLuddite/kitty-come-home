@@ -9,15 +9,15 @@ culvert. A written grid fixes this, and it is the piece the app is eventually me
 
 ## Setting the radius
 
-Work in rings from the **point of escape** — the specific door or window, not the middle of your
+Work in rings from the **point of escape**, the specific door or window, not the middle of your
 house.
 
 | Ring | Radius | Priority |
 |---|---|---|
 | 0 | Your own property | Search first, search completely, search again |
-| 1 | ~50 m — roughly the adjacent five houses in each direction | **Highest.** The median find is 39 m |
-| 2 | ~150 m — the 75th percentile for indoor-only cats | High |
-| 3 | ~500 m — 75% of all cats are found inside this | Moderate; only after 1 and 2 are properly done |
+| 1 | ~50 m, roughly the adjacent five houses in each direction | **Highest.** The median find is 39 m |
+| 2 | ~150 m, the 75th percentile for indoor-only cats | High |
+| 3 | ~500 m, 75% of all cats are found inside this | Moderate; only after 1 and 2 are properly done |
 
 Beyond ring 3 is rarely productive for an indoor-only cat and is usually a sign the inner rings
 were searched too quickly.
@@ -32,16 +32,16 @@ is what you either did or did not put a torch into.
 
 For every property in the ring, the checklist is:
 
-- [ ] Under the deck or porch — every access gap
+- [ ] Under the deck or porch, every access gap
 - [ ] Crawlspace, and its vents
 - [ ] Under the front and back steps
-- [ ] Shed — inside, and underneath
-- [ ] Garage — inside, and behind everything in it
+- [ ] Shed, inside, and underneath
+- [ ] Garage, inside, and behind everything in it
 - [ ] Under parked cars, and **inside the wheel arches and up on the engine block**
 - [ ] Woodpile, and inside the gaps
 - [ ] Under and inside garden furniture, barbecue covers, tarpaulins
 - [ ] Bins, and behind the bin store
-- [ ] Dense shrubs and hedge bases — from underneath, not from standing height
+- [ ] Dense shrubs and hedge bases, from underneath, not from standing height
 - [ ] Drains, culverts, storm channels
 - [ ] Under raised outbuildings and playhouses
 - [ ] Greenhouse, potting shed, compost bin
@@ -61,7 +61,7 @@ outcomes.
 |---|---|
 | **Searched** | Torch went in. You saw the whole space. Nothing there. |
 | **Partial** | You looked but could not see all of it. **Treat as unsearched.** Come back. |
-| **Blocked** | You could not access it — locked shed, no answer at the door. **These are your highest-value targets.** |
+| **Blocked** | You could not access it, locked shed, no answer at the door. **These are your highest-value targets.** |
 
 The blocked list matters more than the searched list. The 11% of cats found inside someone
 else's building were, until someone opened the door, sitting on a blocked line in somebody's grid.

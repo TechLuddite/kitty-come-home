@@ -23,7 +23,7 @@ have walked into a trap on night one.
 1. Place the trap **exactly where the feeding station is**, in the same spot the cat already
    trusts. Do not move the station to suit the trap.
 2. Put the trap on **level, stable ground**. A trap that rocks will not be entered twice.
-3. **Cover it with a towel or blanket** — top and sides, leaving both ends open. It has to read as
+3. **Cover it with a towel or blanket**, top and sides, leaving both ends open. It has to read as
    a tunnel, not a cage.
 4. Put the food **right at the back**, past the trip plate. A small trail of a few pieces leading
    in helps.
@@ -39,7 +39,7 @@ have walked into a trap on night one.
 Check it at least every hour, and through the night. Sit somewhere you can see it, or use the
 camera. A trapped animal is exposed, frightened, and cannot escape a predator, weather, or
 someone with bad intentions. This is the one part of this document where getting it wrong causes
-real harm — to your cat or to whatever else you catch.
+real harm, to your cat or to whatever else you catch.
 
 If you cannot commit to checking it hourly, do not set it tonight.
 
@@ -50,7 +50,7 @@ You will. Raccoons, opossums, skunks and neighbourhood cats all like tuna.
 - **Release it immediately, calmly, and away from yourself.** Approach from behind the covered
   end, open the door, stand back, and let it leave in its own time.
 - **Skunks:** move slowly and keep the cover on. A covered trap is your protection. If you are not
-  confident, call animal control — they deal with this routinely and will not mind.
+  confident, call animal control, they deal with this routinely and will not mind.
 - **A neighbour's cat:** check for a collar, release it, and consider whether the station is in
   the right place.
 - Rebait and reset.
@@ -61,12 +61,12 @@ You will. Raccoons, opossums, skunks and neighbourhood cats all like tuna.
    there and clearly your cat. A cat that bolts from an opened trap can be harder to recover the
    second time, because now the tunnel is dangerous.
 2. **Cover the trap fully** with a blanket. Dark is calming.
-3. **Carry it inside**, into one small closed room — a bathroom is ideal.
+3. **Carry it inside**, into one small closed room, a bathroom is ideal.
 4. **Close the door, then open the trap and leave the room.** Let it come out alone and hide.
 5. Leave food, water and a litter tray. Let it stay in that room for a day or more.
 6. **Expect it not to behave like itself for several days.** Hiding, not eating in front of you,
    flinching. This passes.
-7. **Get it to a vet** in the next day or two — dehydration, weight loss, wounds and abscesses are
+7. **Get it to a vet** in the next day or two, dehydration, weight loss, wounds and abscesses are
    common after even a short time out, and some of it is not visible.
 
 Then take your posters down, tell the neighbours who helped, and update your listings so nobody

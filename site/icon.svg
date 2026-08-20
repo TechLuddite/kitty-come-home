@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Kitty Come Home">
+  <rect width="512" height="512" rx="96" fill="#0c0e11"/>
+  <path d="M256 132 A 132 132 0 0 1 388 264 L 388 300 A 132 132 0 0 1 124 300 L 124 264 A 132 132 0 0 1 256 132 Z" fill="none"/>
+  <path d="M150 200 L138 118 L210 158 Z" fill="#ffc663"/>
+  <path d="M362 200 L374 118 L302 158 Z" fill="#ffc663"/>
+  <ellipse cx="256" cy="278" rx="118" ry="106" fill="#ffc663"/>
+  <circle cx="214" cy="262" r="17" fill="#0c0e11"/>
+  <circle cx="298" cy="262" r="17" fill="#0c0e11"/>
+  <path d="M256 300 l-14 14 h28 z" fill="#0c0e11"/>
+  <path d="M256 314 v14" stroke="#0c0e11" stroke-width="8" stroke-linecap="round"/>
+</svg>

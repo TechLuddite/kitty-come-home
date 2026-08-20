@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Kitty Come Home, find an escaped indoor cat</title>
+<title>Kitty Come Home: find an escaped indoor cat</title>
 <meta name="description" content="Your indoor cat is probably hiding within a few houses and may not come when called. A step-by-step search protocol based on published research. Free, offline, no account.">
 <meta name="theme-color" content="#0c0e11">
 <link rel="manifest" href="manifest.webmanifest">
@@ -460,8 +460,10 @@ footer .fnav a{color:var(--torch);text-decoration:none;font-weight:600}
     Array.prototype.forEach.call(lists, function(list){ del("kch.ck." + list.getAttribute("data-key")); });
   });
 
-  // Offline. Guarded: sandboxed previews and file:// have no SW, and that is fine.
-  if ("serviceWorker" in navigator && location.protocol === "https:") {
+  // Offline. isSecureContext rather than a protocol check: it is true for https and
+  // for localhost, so contributors can exercise the offline path locally, and false
+  // for file:// and sandboxed previews, where registration would throw.
+  if ("serviceWorker" in navigator && window.isSecureContext) {
     window.addEventListener("load", function(){
       navigator.serviceWorker.register("sw.js").catch(function(){});
     });

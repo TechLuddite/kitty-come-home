@@ -92,21 +92,21 @@ Reasoning, provider assessment and rejected options: [`docs/ai-scope.md`](docs/a
 
 ## The site
 
-**[kittycomehome.opsvibe.systems](https://kittycomehome.opsvibe.systems)**
+**[kittycomehome.org](https://kittycomehome.org)**
 
 The protocol as a phone-first web page. No account, no analytics, no cookies, no third-party
 requests of any kind. It caches itself so it works with no signal, it prints as a handout, and
 it has a red-on-black night mode so reading it does not cost you the dark adaptation you need
 for the torch work at 2am.
 
-Source in [`site/`](site/). Deployment and the DNS record: [`docs/deployment.md`](docs/deployment.md).
+Source in [`site/`](site/). Deployment and the DNS records: [`docs/deployment.md`](docs/deployment.md).
 
 ## Status
 
 | Part | State |
 |---|---|
 | Field protocol | Written, sourced, usable today |
-| Public site | Built and tested, pending repo visibility and one DNS record |
+| Public site | Live at [kittycomehome.org](https://kittycomehome.org) |
 | Supabase project | Live: schema applied, RLS verified 14/14, advisors clean |
 | Public API surface | None, deliberately. See [ADR 0004](docs/adr/0004-privacy-and-location-handling.md) |
 | Search coordination app | Not started |

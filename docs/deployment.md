@@ -1,75 +1,122 @@
 # Deployment
 
-Version 1 to 2026-08-20.
+Version 2 to 2026-08-20.
 
 ## Summary
 
-The site is static, hosted on GitHub Pages at **kittycomehome.opsvibe.systems**, and
-deployed by GitHub Actions on every push to `main` that touches `site/`. It has no build
-step, no dependencies and no backend. The Supabase project exists but the site does not
-talk to it.
+The site is static, hosted on GitHub Pages at **kittycomehome.org**, and deployed by
+GitHub Actions on every push to `main` that touches `site/`. It has no build step, no
+dependencies and no backend. The Supabase project exists but the site does not talk to it.
+
+The apex is a product decision rather than a vanity one. The reader is frightened, on a
+phone, often at 2am, and every character they have to type is a character they can get
+wrong. `kittycomehome.org` is the shortest path to the protocol, so the protocol is what
+sits there. Longer addresses are for everyone else: contributors get the repository, and
+`www` and `help` redirect to the apex rather than serving a second copy of the site.
 
 ## What is live
 
 | Thing | State |
 |---|---|
-| `site/` static protocol site | Built and tested. Waiting on the two manual steps below. |
+| `site/` static protocol site | Live at `kittycomehome.org`. |
 | Supabase project `Kitty Come Home` (`ofneiwdioaelvkjuygcd`, us-west-1) | Live. Schema applied, RLS verified, advisors clean. |
 | Public read/write API surface | **None.** Deliberately removed, see ADR 0004 and migration `20260820083146`. |
 
-## The two things only a human can do
+## The domain
 
-**1. Make the repository public.**
+`kittycomehome.org` is ours and uses **Cloudflare** nameservers (`keira.ns.cloudflare.com`,
+`elias.ns.cloudflare.com`), verified 2026-08-20.
 
-GitHub Pages needs a public repository on the free plan. Settings → General → Danger Zone
-→ Change visibility → Public.
+Two addresses that are *not* ours, recorded here so nobody loses an afternoon to them:
 
-That is the only settings change needed. The workflow passes `enablement: true` to
-`actions/configure-pages`, which turns Pages on and sets the source to GitHub Actions by
-API, and the custom domain is read from `site/CNAME` in the published artifact. The first
-run without those failed with `Get Pages site failed ... Not Found`, which is what that
-parameter exists to prevent.
+- **`kittycomehome.com` belongs to someone else.** Registered 2025-12-19 to a third party,
+  parked on Afternic's nameservers and serving a for-sale lander. It cannot be configured,
+  only bought on the aftermarket.
+- **`kittycomehome.opsvibe.systems` is retired.** It was the original address and stopped
+  serving the moment the Pages custom domain changed. It is not coming back.
 
-Once the certificate has been issued, which takes a few minutes after DNS resolves, tick
-**Enforce HTTPS** under Settings → Pages.
+### The records
 
-**2. Create one DNS record.**
+An apex domain cannot be a `CNAME`. That is the whole difference from the old subdomain
+setup, and the reason a straight repeat of the previous recipe does not work here: the apex
+needs address records pointing at GitHub's Pages servers. In the Cloudflare dashboard for
+`kittycomehome.org`, under DNS → Records:
 
-`opsvibe.systems` is registered at Spaceship and uses Spaceship nameservers
-(`launch1.spaceship.net`, `launch2.spaceship.net`), verified 2026-08-20. Add this in
-Spaceship's Advanced DNS for the domain:
+| Type | Name | Value | Proxy | TTL |
+|---|---|---|---|---|
+| `A` | `@` | `185.199.108.153` | **DNS only** | Auto |
+| `A` | `@` | `185.199.109.153` | **DNS only** | Auto |
+| `A` | `@` | `185.199.110.153` | **DNS only** | Auto |
+| `A` | `@` | `185.199.111.153` | **DNS only** | Auto |
+| `AAAA` | `@` | `2606:50c0:8000::153` | **DNS only** | Auto |
+| `AAAA` | `@` | `2606:50c0:8001::153` | **DNS only** | Auto |
+| `AAAA` | `@` | `2606:50c0:8002::153` | **DNS only** | Auto |
+| `AAAA` | `@` | `2606:50c0:8003::153` | **DNS only** | Auto |
+| `CNAME` | `www` | `techluddite.github.io` | **DNS only** | Auto |
+| `CNAME` | `help` | `techluddite.github.io` | **DNS only** | Auto |
 
-| Type | Host | Value | TTL |
-|---|---|---|---|
-| `CNAME` | `kittycomehome` | `techluddite.github.io` | Automatic |
+Notes on those records:
 
-Notes on that record:
-
-- **The value comes from GitHub, not from Supabase.** It is the account's GitHub Pages
-  apex, `techluddite.github.io`. It is not the repository URL, not a path, and there is
-  nothing to look up: the form is always `<github-username>.github.io`. Confirmed live, it
-  resolves to the GitHub Pages addresses `185.199.108.153` through `185.199.111.153`.
-- Enter the host as just `kittycomehome`, not the full domain. Spaceship appends the zone.
-- Spaceship is a plain authoritative DNS provider with no proxy layer, so there is no
-  orange-cloud equivalent to worry about. If the domain ever moves to Cloudflare, the
-  record must stay unproxied until GitHub has issued the certificate, because a proxied
-  record breaks the HTTP challenge.
-- `opsvibe.systems` currently has **no CAA record**, verified 2026-08-20, so nothing blocks
-  GitHub from issuing a Let's Encrypt certificate. If a CAA record is added later it needs
-  `letsencrypt.org` in it or HTTPS on this subdomain will break at renewal.
+- **Grey cloud, never orange.** Every record must be DNS only. Proxying puts Cloudflare's
+  addresses in front of GitHub's, which breaks the HTTP challenge GitHub uses to issue the
+  certificate and can leave a redirect loop behind afterwards. The pre-existing `help`
+  record was already DNS only, which is why it worked first time.
+- **All four `A` records, not one.** GitHub publishes four and expects all four. One record
+  is a single point of failure for no benefit.
+- The `AAAA` records are optional but free, and IPv6-only mobile networks are real. Verified
+  2026-08-20 as the current addresses behind `techluddite.github.io`.
+- `www` and `help` resolve to the same Pages site, and GitHub redirects both to the apex on
+  its own, because the apex is the configured custom domain. There is no second copy to
+  keep in sync and no redirect rule to write.
+- The value `techluddite.github.io` is the **account's** Pages apex. It is not the
+  repository URL and not a path: the form is always `<github-username>.github.io`.
+- `kittycomehome.org` has **no CAA record**, verified 2026-08-20, so nothing blocks GitHub
+  from issuing a Let's Encrypt certificate. If a CAA record is ever added it needs
+  `letsencrypt.org` in it, or HTTPS breaks at the next renewal.
 
 Propagation is usually minutes. GitHub re-checks the domain on a schedule, so if it reports
-the DNS as unverified immediately after you create the record, give it ten minutes.
+the DNS as unverified straight after you create the records, give it ten minutes.
+
+### The order matters
+
+This is the part that is easy to get backwards, and getting it backwards is what took the
+site down once already:
+
+1. **DNS records first.** Create them, and confirm they resolve before touching GitHub.
+2. **Then `site/CNAME`.** It is the source of truth for the custom domain. The Pages source
+   is GitHub Actions, and Pages reads the CNAME out of the published artifact on every
+   single deploy.
+3. **Then the Settings page, only if it still disagrees.** Setting the custom domain under
+   Settings → Pages does work, but the next deploy overwrites it with whatever `site/CNAME`
+   says. Setting it in the UI while `site/CNAME` still held the old value is exactly how the
+   old address went dark while the repository was still claiming it, one push away from
+   silently reverting the new one.
+4. **Then Enforce HTTPS**, under Settings → Pages, once the certificate has been issued.
+   The tick box stays greyed out until it has.
+
+The `verify` job in the deploy workflow asserts that `site/CNAME` matches the expected
+domain, so drift between the repository and the live site fails the build instead of
+quietly moving the site out from under its readers.
+
+## Repository visibility
+
+GitHub Pages needs a public repository on the free plan, and this one is public. The
+workflow passes `enablement: true` to `actions/configure-pages`, which turns Pages on and
+sets the source to GitHub Actions over the API, so no one has to visit Settings before the
+first deploy. The very first run predated that parameter and failed with
+`Get Pages site failed ... Not Found`, which is what it exists to prevent.
 
 ## Verifying it worked
 
-1. `https://kittycomehome.opsvibe.systems` loads and redirects to HTTPS.
-2. Open developer tools, Network tab, hard reload. **There should be no request to any
+1. `https://kittycomehome.org` loads, and the `http://` form redirects to it.
+2. `https://www.kittycomehome.org` and `https://help.kittycomehome.org` both redirect to
+   the apex rather than serving their own copy.
+3. Open developer tools, Network tab, hard reload. **There should be no request to any
    origin other than the site itself.** The privacy page makes that promise in public, and
    the deploy workflow fails the build if a third-party subresource appears in `site/`.
-3. Load the page once, turn off the network, reload. It should still work: the service
+4. Load the page once, turn off the network, reload. It should still work: the service
    worker caches it, which is the whole point for someone in a garden with no signal.
-4. Print preview. The protocol should come out as a clean handout with the checkboxes and
+5. Print preview. The protocol should come out as a clean handout with the checkboxes and
    without the navigation.
 
 ## The deploy workflow

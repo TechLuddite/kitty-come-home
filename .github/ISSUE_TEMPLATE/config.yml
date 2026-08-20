@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: I am searching for my cat right now
+    url: https://github.com/TechLuddite/kitty-come-home/blob/main/docs/protocol/first-24-hours.md
+    about: Start here. The field protocol works right now, on paper, with no account. Read section 1 first.
+  - name: Report a security or privacy issue
+    url: https://github.com/TechLuddite/kitty-come-home/security/advisories/new
+    about: Location disclosure, PII exposure, or any vulnerability. Please do not open a public issue.

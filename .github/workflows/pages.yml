@@ -54,7 +54,16 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+
+      # enablement:true turns Pages on via the API and sets the source to GitHub
+      # Actions, so the first deploy does not need anyone to visit Settings first.
+      # Without it the run fails with "Get Pages site failed ... Not Found".
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      # The custom domain comes from site/CNAME, which Pages reads out of the
+      # published artifact. There is nothing to set by hand.
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site

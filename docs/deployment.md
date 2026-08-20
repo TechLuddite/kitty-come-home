@@ -19,17 +19,19 @@ talk to it.
 
 ## The two things only a human can do
 
-**1. Make the repository public and turn Pages on.**
+**1. Make the repository public.**
 
-GitHub Pages needs a public repository on the free plan.
+GitHub Pages needs a public repository on the free plan. Settings → General → Danger Zone
+→ Change visibility → Public.
 
-- Settings → General → Danger Zone → Change visibility → Public
-- Settings → Pages → Build and deployment → Source: **GitHub Actions**
-- Settings → Pages → Custom domain: `kittycomehome.opsvibe.systems`, then Save
-- Tick **Enforce HTTPS** once the certificate has been issued, which takes a few minutes
+That is the only settings change needed. The workflow passes `enablement: true` to
+`actions/configure-pages`, which turns Pages on and sets the source to GitHub Actions by
+API, and the custom domain is read from `site/CNAME` in the published artifact. The first
+run without those failed with `Get Pages site failed ... Not Found`, which is what that
+parameter exists to prevent.
 
-The `site/CNAME` file already carries the domain, so the custom domain field should
-populate on the first deploy.
+Once the certificate has been issued, which takes a few minutes after DNS resolves, tick
+**Enforce HTTPS** under Settings → Pages.
 
 **2. Create one DNS record.**
 

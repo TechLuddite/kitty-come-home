@@ -1,6 +1,6 @@
 // Offline cache. The whole point is that this works in a garden at 2am with no signal.
 // Bump CACHE when the site content changes.
-const CACHE = 'kch-v4';
+const CACHE = 'kch-v5';
 const ASSETS = [
   './', './index.html', './privacy.html', './support.html',
   './manifest.webmanifest', './icon.svg'

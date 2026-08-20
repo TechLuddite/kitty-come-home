@@ -28,7 +28,9 @@ part people skip.
 
 Do these in order. Do not skip step 1, however sure you are.
 
-1. **Search your own home first. Completely.** 4% of found cats had never left. Check inside
+1. **Search your own home first. Completely.** 4% of the cats found alive in the 2018 study were
+   found inside their own home. Of those, a third were behind or under furniture, a third were in the
+   basement, and one was inside the box springs of a couch. Check inside
    sofa bases and box springs, behind and under every appliance, inside cupboards, wardrobes,
    drawers, the back of closets, the dryer, the dishwasher, any suitcase or box, the loft, the
    basement, the garage, and anywhere a cat could have been shut in when a door closed. Move
@@ -43,7 +45,14 @@ Do these in order. Do not skip step 1, however sure you are.
 
 3. **Prop your door open if you safely can**, or leave a window cracked with a screen removed at
    ground level. Cats often return on their own during the quiet hours before dawn. Put the
-   litter tray just outside the door, the smell is a strong navigation cue.
+   a light on and listen out: 18% of the cats found outside in the 2018 study were found right at the
+   entrance to their own home.
+
+   **Do not put the litter tray outside.** You will be told to, by almost everyone. The Missing Animal
+   Response Network, an author on the study this protocol is built from, specifically discourages it:
+   the pheromones can attract territorial cats who then keep your cat out of her own garden, nobody has
+   shown a cat can smell it from any distance, and other sources warn it can draw predators. Its worst
+   effect is that it feels like doing something instead of searching.
 
 4. **Get the whole household quiet and switch off the noise.** TV off, music off. You are
    listening for a very faint sound: a rustle, a bell, a single short cry.

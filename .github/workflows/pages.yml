@@ -30,7 +30,7 @@ jobs:
       - name: No external origins in the site
         run: |
           if grep -rnoE 'https?://[^"'"'"' )]+' site/ \
-             | grep -vE '(github\.com|lost\.petcolove\.org|pawboost\.com|doi\.org|missinganimalresponse\.com|paypal\.com|tech2u\.com|halomsp\.com|docs\.github\.com|creativecommons\.org|w3\.org)' \
+             | grep -vE '(github\.com|lost\.petcolove\.org|pawboost\.com|doi\.org|missinganimalresponse\.com|alleycat\.org|paypal\.com|tech2u\.com|halomsp\.com|docs\.github\.com|creativecommons\.org|w3\.org)' \
              | grep -vE '^\S+:\s*$'; then
             echo "::error::Unexpected external URL in site/. Add it to the privacy table and this allowlist, or remove it."
             exit 1

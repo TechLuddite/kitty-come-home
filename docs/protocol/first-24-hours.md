@@ -50,7 +50,7 @@ Do these in order. Do not skip step 1, however sure you are.
 
    **Do not put the litter tray outside.** You will be told to, by almost everyone. The Missing Animal
    Response Network, an author on the study this protocol is built from, specifically discourages it:
-   the pheromones can attract territorial cats who then keep your cat out of her own garden, nobody has
+   the pheromones can attract territorial cats who then keep Kitty out of your own garden, nobody has
    shown a cat can smell it from any distance, and other sources warn it can draw predators. Its worst
    effect is that it feels like doing something instead of searching.
 

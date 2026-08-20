@@ -33,20 +33,28 @@ populate on the first deploy.
 
 **2. Create one DNS record.**
 
-| Type | Name | Value | Proxy |
+`opsvibe.systems` is registered at Spaceship and uses Spaceship nameservers
+(`launch1.spaceship.net`, `launch2.spaceship.net`), verified 2026-08-20. Add this in
+Spaceship's Advanced DNS for the domain:
+
+| Type | Host | Value | TTL |
 |---|---|---|---|
-| `CNAME` | `kittycomehome` | `techluddite.github.io` | **DNS only** |
+| `CNAME` | `kittycomehome` | `techluddite.github.io` | Automatic |
 
-Two notes on that record:
+Notes on that record:
 
-- The value is the GitHub Pages apex for the account, `techluddite.github.io`, **not** the
-  repository URL and not a path.
-- If `opsvibe.systems` is on Cloudflare, leave the record **grey-clouded / DNS only.**
-  GitHub issues the TLS certificate over an HTTP challenge, and a proxied record breaks
-  that, which shows up as a certificate error that then takes a while to clear. It can be
-  proxied later once the certificate exists, but there is little reason to: GitHub already
-  fronts Pages with a CDN, and proxying adds Cloudflare to the list of parties who see
-  visitor IP addresses, which would then need adding to the privacy page.
+- **The value comes from GitHub, not from Supabase.** It is the account's GitHub Pages
+  apex, `techluddite.github.io`. It is not the repository URL, not a path, and there is
+  nothing to look up: the form is always `<github-username>.github.io`. Confirmed live, it
+  resolves to the GitHub Pages addresses `185.199.108.153` through `185.199.111.153`.
+- Enter the host as just `kittycomehome`, not the full domain. Spaceship appends the zone.
+- Spaceship is a plain authoritative DNS provider with no proxy layer, so there is no
+  orange-cloud equivalent to worry about. If the domain ever moves to Cloudflare, the
+  record must stay unproxied until GitHub has issued the certificate, because a proxied
+  record breaks the HTTP challenge.
+- `opsvibe.systems` currently has **no CAA record**, verified 2026-08-20, so nothing blocks
+  GitHub from issuing a Let's Encrypt certificate. If a CAA record is added later it needs
+  `letsencrypt.org` in it or HTTPS on this subdomain will break at renewal.
 
 Propagation is usually minutes. GitHub re-checks the domain on a schedule, so if it reports
 the DNS as unverified immediately after you create the record, give it ten minutes.
@@ -88,6 +96,23 @@ Edit files in `site/`, push to `main`, and it deploys. Two things to remember:
   breaks the page gutter. That last one exists because a padding shorthand on `header.top`
   silently overrode the page gutter and pushed the hero text to the screen edge, which
   looked fine in the markup and only showed up in a screenshot.
+
+## Why GitHub Pages and not Supabase
+
+Supabase is a database, an auth service, object storage and a function runtime. It is not a
+static web host: there is no way to point a custom domain at a set of HTML files on the
+free tier, and Supabase's own custom-domain feature is a paid add-on that applies to the API
+endpoint rather than to hosting a site.
+
+The split is that GitHub Pages serves the pages, and Supabase holds the case data once the
+search tool exists. Right now the site contains no code that contacts Supabase at all.
+
+Keeping the protocol on a dumb static host is a deliberate choice rather than a stopgap. It
+has no backend that can fail, it caches itself for offline use, and it does not depend on a
+database being awake. That last point is concrete: **free-tier Supabase projects pause after
+roughly a week of inactivity.** If the protocol were served from Supabase, a quiet week
+would take the site down, and the whole argument for this project is that the page has to
+work at 2am on the worst night of somebody's year.
 
 ## Supabase
 

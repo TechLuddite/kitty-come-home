@@ -29,12 +29,12 @@ building work in progress, or a car that has not moved in a while.
 Short, specific, and asking for one concrete action:
 
 > "Sorry to bother you. I'm at number 14, four doors down. My indoor cat got out on Tuesday
-> night. She's a grey tabby with a white chest, and she's never been outside before, so she'll be
-> hiding rather than wandering, and she often won't come out even if she hears you, so please
-> don't take quiet as a no.
+> night. Kitty is a grey tabby with a white chest who has never been outside before, so Kitty
+> will be hiding rather than wandering, and often won't come out even after hearing you, so
+> please don't take quiet as a no.
 >
 > Could I ask a favour, would you mind opening your shed and garage and having a proper look
-> with a torch? Under the deck too, if you have one. She'd be tucked right at the back and
+> with a torch? Under the deck too, if you have one. Kitty will be tucked right at the back and
 > completely silent, so it does need a light.
 >
 > Here's a photo and my number. Any time of night is fine, honestly."
@@ -53,7 +53,7 @@ The four things that need to be in it:
 
 Two questions, always:
 
-- "Have you seen her?"
+- "Have you seen Kitty?"
 - **"Is there anywhere on your property I could check, a shed or a crawlspace?"**
 
 The second is the one that finds cats. Log every "no answer" and every locked outbuilding as
@@ -92,7 +92,7 @@ LOST CAT. INDOOR ONLY, WILL BE HIDING
 Grey tabby, white chest, green collar
 Missing since Tue 19 Aug from Elm Street
 
-She may NOT come when called.
+Kitty may NOT come when called.
 Please check sheds, garages, decks, crawlspaces.
 
 Call or text ANY TIME, 555-0142

@@ -72,6 +72,49 @@ themselves; someone has to ask.
 
 ### Search methods
 
+This is the part of the study most directly useful to someone searching, and it is richer than a
+single p-value.
+
+Where a physical search was conducted, 59% of cats were found alive, against an odds ratio of
+**1.49 (95% CI 0.97 to 2.29), p = 0.071**. The interval crosses 1, so this is a positive signal
+rather than proof. Note also that 96% of owners searched, so this is close to the base rate.
+
+**The four methods with the fastest relative time to finding the cat alive**, in the paper's own
+list, were:
+
+1. Spoke with neighbours and asked them to look or assist
+2. Walked around the area at night, using a flashlight or spotlight
+3. Asked and received neighbours' permission to search their property using a slow methodical search
+4. Searched my yard or the immediate area
+
+**Highest success of any single method** was asking a neighbour's permission and searching their
+property slowly and methodically: 62% found alive. **Worst of the physical methods** was driving
+around the area: 52% found alive, against 57% to 62% for every other type. The protocol's ordering
+comes directly from this.
+
+**Calling the cat's name** was near-universal at 93% of searchers, but of owners who got their cat
+back, only 34% said it helped most, the lowest figure of any method measured. That supports keeping
+it up while not treating silence as information.
+
+### Methods associated with worse outcomes
+
+Two findings need care, because read carelessly they say something the data does not support.
+
+- **Any type of advertising: OR 0.51 (0.42 to 0.61), p < 0.001.**
+- **Contacted a facility or sought professional help: OR 0.53 (0.45 to 0.62), p < 0.001.**
+
+Both are associated with the cat being *less* likely to be found alive. The authors state the
+reason to be cautious themselves: "These associations between the various search methods and being
+found alive are univariable and did not account for time since the cat went missing when the search
+method was implemented." The obvious reading is reverse causation, since owners whose cats stay
+missing keep escalating. **This is not evidence that advertising harms.** It is a reason not to let
+it displace searching. Of the advertising types, fliers and posters performed best at 52% to 55%.
+
+- **Trapping: p = 0.307.** No detectable benefit.
+- **Identification devices: p = 0.331.** Covered in section 5.
+
+### The original single-line summary, kept for continuity
+
 Physical searching showed evidence of an association with finding the cat alive at **p = 0.071**.
 
 Stated honestly: that is a positive signal that does not clear the conventional 0.05 threshold.
@@ -136,6 +179,27 @@ never got to a scanner.
 
 Keep your cat chipped and keep the registration current. Then go search the neighbour's shed.
 
+## 5b. The litter tray myth
+
+Putting a used litter tray outside is the most widely repeated lost-cat advice there is. **It is
+not supported and may be counterproductive.**
+
+The Missing Animal Response Network, whose founder is an author on the study above, discourages it
+directly. Their stated objections: the pheromones can attract territorial cats who then keep the
+missing cat away from its own garden; no one has demonstrated that a cat can detect it from any
+useful distance; and the belief rests on a questionable-cause fallacy, since owners whose cats came
+home after they put a tray out assumed the tray was why. Other pet and veterinary sources add that
+it can attract predators.
+
+Their strongest objection is behavioural rather than chemical: it is a passive act that feels like
+doing something, and it displaces the methodical physical search that the evidence does support.
+
+Sources: Missing Animal Response Network's "Kitty Litter Myth" and "Dirty Kitty Litter: A
+Questionable Cause Fallacy", and Best Friends Animal Society's lost-cat guide, which quotes
+Albrecht on the territorial-cat mechanism. Read 2026-08-20 via search summaries and the Best
+Friends page; the two MAR pages themselves would not render for automated retrieval, so their
+wording is reported at second hand and should be confirmed against the originals.
+
 ## 6. Regulatory: California stray cat holding period
 
 California Food and Agricultural Code § 31752 sets the required hold for an impounded stray cat
@@ -162,6 +226,13 @@ on it for anything consequential.
 - **Camera triage accuracy in the field.** No evaluation has been run. The published re-ID
   figures cited in the AI scope document are from academic benchmarks on curated datasets, not
   from night-time infrared footage of a feeding station.
+- **Which search methods work for indoor-only cats specifically.** The study's own limitations
+  section states that its analyses "did not sub-divide cats into those that were indoor-only cats
+  versus those that had had outdoor experience." Only the distance figures are broken out for
+  indoor-only cats. Every method finding above is drawn from the whole sample.
+- **Anything resting on accurate recall.** 71% of respondents were describing a cat that went
+  missing more than six months earlier, median about two years. The authors flag likely recall
+  error and note the sample was probably more attached and more willing to search than average.
 - **Whether any of this generalises outside a suburban residential setting.** The distance
   findings come from a self-selected sample skewed toward owners engaged enough to complete a
   questionnaire. Dense urban apartments and rural properties may behave differently.

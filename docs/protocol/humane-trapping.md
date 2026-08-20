@@ -1,7 +1,11 @@
 # Humane trapping
 
 When you have confirmed your cat is visiting a feeding station but will not let you approach,
-a humane trap is usually how the search ends.
+a humane trap is the usual next step.
+
+**One thing to know first:** the 2018 study found no evidence that trapping improved the odds of
+getting a cat back (p = 0.307). Treat a trap as a way to recover a cat you have already located,
+not as a way to find one. The locating is done by the search and the camera.
 
 **A frightened, displaced cat will very often not come to its own owner.** This is not a failure
 of the relationship and it does not mean the cat is feral now. It is in survival mode, and the
@@ -13,7 +17,7 @@ have walked into a trap on night one.
 1. **Confirm the cat is actually visiting**, with camera footage or repeated food disappearing at
    a consistent hour. Trapping blind mostly catches raccoons.
 2. **Borrow rather than buy.** Local shelters, TNR groups, rescue organisations and animal control
-   commonly lend humane traps free or for a deposit. Ask; the answer is usually yes, and they will
+   will often lend or rent humane traps. Ask; the answer is usually yes, and they will
    often give you good local advice with it.
 3. **Ask about local rules.** Some jurisdictions have requirements about trapping, and trapping on
    someone else's property needs their permission. Get it in writing if you can.
@@ -36,7 +40,10 @@ have walked into a trap on night one.
 
 > **Never leave a set trap unattended.**
 
-Check it at least every hour, and through the night. Sit somewhere you can see it, or use the
+This is the one rule everyone in this field agrees on. Alley Cat Allies say to keep eyes on traps
+from a distance and never walk away from them. Published lost-pet trapping guidance allows up to
+three or four hours between checks in ordinary conditions, and says to check far more often, around
+hourly, in temperature extremes, meaning below freezing or above about 27C. Sit somewhere you can see it, or use the
 camera. A trapped animal is exposed, frightened, and cannot escape a predator, weather, or
 someone with bad intentions. This is the one part of this document where getting it wrong causes
 real harm, to your cat or to whatever else you catch.

@@ -12,15 +12,19 @@ If you have a credible sighting elsewhere, add a second station there. Keep the 
 
 ## What to put out
 
-1. **Strong-smelling food.** Tinned tuna, sardines, or the smelliest wet food you have. Smell is
-   the whole point, dry food does not carry. Refresh it daily; it goes off and stops working.
+1. **Strong-smelling food.** Tinned tuna, sardines, or the smelliest wet food you have, on the
+   reasoning that it carries further than dry food. Refresh it daily so it does not go off.
 2. **Water.**
-3. **Your cat's litter tray, unemptied.** Counter-intuitive and genuinely useful, it is the
-   strongest available scent marker of home territory.
-4. **Something that smells of you and of home**, an unwashed t-shirt, its bed, a blanket it slept
-   on.
-5. **A shelter**, if the weather is poor: a box or carrier on its side, opening away from the wind,
-   with the bedding inside. Cats will use a covered station when they will not approach an open one.
+3. **Shelter, if the weather is poor.** A box or carrier on its side, opening away from the wind,
+   with dry bedding inside. Cats will use a covered station when they will not approach an open one.
+
+**Do not put the litter tray out, and go easy on scent items generally.** The litter tray is the
+most repeated piece of lost-cat advice there is and the Missing Animal Response Network, an author
+on the study this protocol is built from, specifically discourages it. Their objection is that the
+pheromones can attract territorial cats who then keep your cat away, and that nobody has shown a
+cat can smell it from any distance; other sources warn it can draw predators. Worn clothing and
+bedding are less risky than a litter tray, but the idea that either draws a cat home is untested,
+and neither is a substitute for searching.
 
 **Do not put out anything that draws a crowd of other animals if you can avoid it.** You will get
 raccoons, opossums, skunks and other cats regardless, that is expected, and it is exactly the
@@ -40,7 +44,7 @@ Anything that records motion at night is worth having. In rough order of usefuln
 
 Setup notes:
 
-- Mount it **low**, roughly 30 to 45 cm off the ground. Cameras set at human height look straight
+- Mount it **low**, roughly one to two feet off the ground, angled slightly down. Cameras set at human height look straight
   over a cat.
 - Aim it **at the food**, filling the frame with the station rather than the whole garden. Fewer
   false triggers, better identifying detail.

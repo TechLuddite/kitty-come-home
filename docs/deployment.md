@@ -12,7 +12,7 @@ The apex is a product decision rather than a vanity one. The reader is frightene
 phone, often at 2am, and every character they have to type is a character they can get
 wrong. `kittycomehome.org` is the shortest path to the protocol, so the protocol is what
 sits there. Longer addresses are for everyone else: contributors get the repository, and
-`www` and `help` redirect to the apex rather than serving a second copy of the site.
+`www` redirects to the apex rather than serving a second copy of the site.
 
 ## What is live
 
@@ -34,6 +34,10 @@ Two addresses that are *not* ours, recorded here so nobody loses an afternoon to
   only bought on the aftermarket.
 - **`kittycomehome.opsvibe.systems` is retired.** It was the original address and stopped
   serving the moment the Pages custom domain changed. It is not coming back.
+- **`help.kittycomehome.org` is gone.** It briefly served the site while the apex was being
+  set up, and its `CNAME` was removed once the apex took over. Anything pointing at it now
+  fails to resolve. If it ever needs to come back it is one unproxied `CNAME` to
+  `techluddite.github.io`, and GitHub will redirect it to the apex.
 
 ### The records
 
@@ -53,21 +57,24 @@ needs address records pointing at GitHub's Pages servers. In the Cloudflare dash
 | `AAAA` | `@` | `2606:50c0:8002::153` | **DNS only** | Auto |
 | `AAAA` | `@` | `2606:50c0:8003::153` | **DNS only** | Auto |
 | `CNAME` | `www` | `techluddite.github.io` | **DNS only** | Auto |
-| `CNAME` | `help` | `techluddite.github.io` | **DNS only** | Auto |
 
 Notes on those records:
 
 - **Grey cloud, never orange.** Every record must be DNS only. Proxying puts Cloudflare's
   addresses in front of GitHub's, which breaks the HTTP challenge GitHub uses to issue the
-  certificate and can leave a redirect loop behind afterwards. The pre-existing `help`
-  record was already DNS only, which is why it worked first time.
+  certificate and can leave a redirect loop behind afterwards. The short-lived `help` record
+  was DNS only, which is why the certificate for it issued without trouble, and the apex
+  records were created the same way.
 - **All four `A` records, not one.** GitHub publishes four and expects all four. One record
   is a single point of failure for no benefit.
 - The `AAAA` records are optional but free, and IPv6-only mobile networks are real. Verified
   2026-08-20 as the current addresses behind `techluddite.github.io`.
-- `www` and `help` resolve to the same Pages site, and GitHub redirects both to the apex on
-  its own, because the apex is the configured custom domain. There is no second copy to
-  keep in sync and no redirect rule to write.
+- The apex records are live, verified 2026-08-20: all four `A` records, all four `AAAA`
+  records, a Let's Encrypt certificate issued for `kittycomehome.org`, and Enforce HTTPS on.
+- **`www` is not created yet.** It is the one record still worth adding: people type it out
+  of habit, and without it they get a DNS failure rather than the site. Once it exists it
+  needs nothing further, because GitHub redirects it to the apex on its own whenever the
+  apex is the configured custom domain. No second copy of the site, no redirect rule.
 - The value `techluddite.github.io` is the **account's** Pages apex. It is not the
   repository URL and not a path: the form is always `<github-username>.github.io`.
 - `kittycomehome.org` has **no CAA record**, verified 2026-08-20, so nothing blocks GitHub
@@ -109,8 +116,8 @@ first deploy. The very first run predated that parameter and failed with
 ## Verifying it worked
 
 1. `https://kittycomehome.org` loads, and the `http://` form redirects to it.
-2. `https://www.kittycomehome.org` and `https://help.kittycomehome.org` both redirect to
-   the apex rather than serving their own copy.
+2. Once the `www` record exists, `https://www.kittycomehome.org` redirects to the apex
+   rather than serving its own copy.
 3. Open developer tools, Network tab, hard reload. **There should be no request to any
    origin other than the site itself.** The privacy page makes that promise in public, and
    the deploy workflow fails the build if a third-party subresource appears in `site/`.

@@ -28,8 +28,8 @@ part people skip.
 
 Do these in order. Do not skip step 1, however sure you are.
 
-1. **Search your own home first. Completely.** 4% of the cats found alive in the 2018 study were
-   found inside their own home. Of those, a third were behind or under furniture, a third were in the
+1. **Search your own home first. Completely.** Of the cats found in the 2018 study, 4% were
+   inside their own home. Of those, a third were behind or under furniture, a third were in the
    basement, and one was inside the box springs of a couch. Check inside
    sofa bases and box springs, behind and under every appliance, inside cupboards, wardrobes,
    drawers, the back of closets, the dryer, the dishwasher, any suitcase or box, the loft, the

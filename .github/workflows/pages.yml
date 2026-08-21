@@ -43,7 +43,7 @@ jobs:
 
       - name: CNAME matches the expected domain
         run: |
-          test "$(cat site/CNAME)" = "kittycomehome.opsvibe.systems" \
+          test "$(cat site/CNAME)" = "kittycomehome.org" \
             || { echo "::error::site/CNAME does not match the configured custom domain."; exit 1; }
 
   deploy:

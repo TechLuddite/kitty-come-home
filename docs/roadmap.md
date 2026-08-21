@@ -14,7 +14,7 @@ somebody before any code ships.
 - [x] Evidence base with sourcing and honest caveats
 - [x] First 24 hours
 - [x] Search grid, neighbour canvass, feeding station, approach, trapping
-- [x] Published as a phone-first site at kittycomehome.opsvibe.systems: offline-capable,
+- [x] Published as a phone-first site at kittycomehome.org: offline-capable,
       printable, night mode, no third-party requests
 - [ ] **Review by someone who does this work.** Shelter staff, TNR trappers, MAR-trained
       searchers. This is the highest-value open item in the repository.

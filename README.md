@@ -22,8 +22,8 @@ Response case data that preceded it:
 | All cats found within 500 m of escape point | 75% |
 | Found cats that were in a shelter | **under 2%** |
 | Found outside / in a neighbour's house | 83% / 11% |
-| Recovered alive by day 7 | 34% (95% CI 31 to 37%) |
-| Recovered alive within one year | 61% (95% CI 57 to 64%) |
+| Recovered by day 7 | 34% (95% CI 31 to 37%) |
+| Recovered within one year | 61% (95% CI 57 to 64%) |
 | Microchipping's effect on recovery | none detected (p = 0.331) |
 
 Two of those numbers set the whole design.
